@@ -1,0 +1,127 @@
+.section {
+  padding: 96px 0;
+  background: #f8f9fc;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #1d4ed8;
+}
+
+.title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.lead {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1.5px solid rgba(15,23,42,0.09);
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #bfdbfe;
+  box-shadow: 0 12px 36px rgba(29,78,216,0.09);
+}
+
+.iconWrap {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.cardTitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.banner {
+  background: #1d4ed8;
+  border-radius: 20px;
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.bannerText h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.bannerText p {
+  font-size: 15px;
+  color: #bfdbfe;
+}
+
+.bannerBtn {
+  padding: 13px 28px;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-family: 'Ethnocentric', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.bannerBtn:hover {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .banner { flex-direction: column; text-align: center; padding: 32px 28px; }
+}

@@ -1,0 +1,206 @@
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('https://cdn.jsdelivr.net/npm/@fontsource/ethnocentric@5.0.3/files/ethnocentric-latin-400-normal.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 0;
+  transition: background 0.3s, padding 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(16px);
+  padding: 11px 0;
+  border-bottom-color: rgba(15,23,42,0.09);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.logoMark {
+  width: 40px; height: 40px;
+  background: #1d4ed8;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Ethnocentric', sans-serif;
+  font-weight: 400; font-size: 20px;
+  color: white; flex-shrink: 0; line-height: 1;
+}
+
+.logoText {
+  font-family: 'Ethnocentric', sans-serif;
+  font-weight: 400; font-size: 14px;
+  color: #0f172a;
+  letter-spacing: 0.02em; text-transform: uppercase;
+}
+
+/* NAV LINKS */
+.links {
+  display: flex; gap: 2px; list-style: none; align-items: center;
+}
+
+.link {
+  padding: 7px 12px;
+  font-size: 13px; font-weight: 500;
+  color: #475569; border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  display: block;
+}
+
+.link:hover { color: #0f172a; background: #f1f4f9; }
+
+/* DROPDOWN */
+.dropParent {
+  position: relative;
+}
+
+.dropTrigger {
+  display: flex; align-items: center; gap: 5px;
+  padding: 7px 12px;
+  font-size: 13px; font-weight: 500;
+  color: #475569; border-radius: 8px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.2s, background 0.2s;
+}
+
+.dropTrigger:hover { color: #0f172a; background: #f1f4f9; }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: #ffffff;
+  border: 1.5px solid rgba(15,23,42,0.09);
+  border-radius: 12px;
+  padding: 6px;
+  min-width: 160px;
+  box-shadow: 0 8px 30px rgba(15,23,42,0.12);
+  z-index: 200;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropItem {
+  display: block;
+  padding: 9px 14px;
+  font-size: 13px; font-weight: 500;
+  color: #475569; border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.dropItem:hover { background: #eff4ff; color: #1d4ed8; }
+
+/* CTA BUTTON */
+.cta {
+  padding: 10px 22px;
+  background: #1d4ed8;
+  color: white;
+  font-family: 'Ethnocentric', sans-serif;
+  font-weight: 400; font-size: 11px;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  border-radius: 9px;
+  transition: background 0.2s, transform 0.2s;
+  white-space: nowrap; margin-left: 8px;
+}
+
+.cta:hover { background: #1e40af; transform: translateY(-1px); }
+
+/* BURGER */
+.burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px; margin-left: 8px;
+}
+
+.bar, .barTop, .barMid, .barBot {
+  width: 22px; height: 2px; background: #0f172a;
+  border-radius: 2px; transition: transform 0.3s, opacity 0.3s; display: block;
+}
+
+.barTop { transform: translateY(7px) rotate(45deg); }
+.barMid { opacity: 0; }
+.barBot { transform: translateY(-7px) rotate(-45deg); }
+
+/* MOBILE MENU */
+.mobile {
+  background: #ffffff;
+  border-top: 1px solid rgba(15,23,42,0.09);
+  display: flex; flex-direction: column;
+  padding: 12px 24px 20px; gap: 2px;
+}
+
+.mobileLink {
+  padding: 11px 14px; font-size: 15px; color: #475569;
+  border-radius: 8px; transition: background 0.2s, color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.mobileLink:hover { background: #f1f4f9; color: #0f172a; }
+
+.mobileDropTrigger {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 14px; font-size: 15px; color: #475569;
+  border-radius: 8px; background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; width: 100%; text-align: left;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mobileDropTrigger:hover { background: #f1f4f9; color: #0f172a; }
+
+.mobileSubMenu {
+  display: flex; flex-direction: column; gap: 1px;
+  margin: 2px 0 2px 16px;
+  border-left: 2px solid #bfdbfe;
+  padding-left: 12px;
+}
+
+.mobileSubItem {
+  padding: 9px 12px; font-size: 14px; color: #475569;
+  border-radius: 8px; transition: background 0.2s, color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.mobileSubItem:hover { background: #eff4ff; color: #1d4ed8; }
+
+.mobileCta {
+  margin-top: 10px; padding: 13px 20px;
+  background: #1d4ed8; color: white;
+  font-family: 'Ethnocentric', sans-serif;
+  font-size: 11px; font-weight: 400; text-transform: uppercase;
+  letter-spacing: 0.03em; text-align: center;
+  border-radius: 10px; transition: background 0.2s;
+}
+
+.mobileCta:hover { background: #1e40af; }
+
+@media (max-width: 860px) {
+  .links { display: none; }
+  .cta { display: none; }
+  .burger { display: flex; }
+}
