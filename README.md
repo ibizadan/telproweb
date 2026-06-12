@@ -21,6 +21,8 @@ The site is **one page** that scrolls through several sections. The "menu" links
 - **React 18.3** (LTS)
 - **TailwindCSS 3.4**
 - **Framer Motion 11**
+- **React Three Fiber** + **drei** (for the 3D rotating torus knot)
+- **Three.js**
 - **Lucide React** icons
 - **Node.js 20** (locked via `.nvmrc`)
 
