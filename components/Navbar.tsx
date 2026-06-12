@@ -23,9 +23,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
-  /* Nav bg = the deep navy/blue from screenshot: #0d1530 with blur */
-  const navBg = 'rgba(10, 18, 48, 0.92)';
-
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
@@ -36,12 +33,13 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-5">
         <div
-          className="flex items-center gap-6 rounded-2xl px-6 py-3 shadow-2xl"
+          className="flex items-center gap-6 rounded-2xl px-6 py-3"
           style={{
-            background: navBg,
-            backdropFilter: 'blur(20px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-            border: '1px solid rgba(255,255,255,0.07)',
+            background: 'linear-gradient(135deg, rgba(13,21,56,0.97) 0%, rgba(8,16,44,0.97) 40%, rgba(18,12,46,0.97) 100%)',
+            backdropFilter: 'blur(24px) saturate(200%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+            border: '1px solid rgba(91,138,255,0.18)',
+            boxShadow: '0 0 0 1px rgba(91,138,255,0.08), 0 8px 32px rgba(0,0,0,0.5), 0 0 60px rgba(61,107,240,0.18), 0 0 120px rgba(61,107,240,0.08)',
           }}
         >
           {/* ── LOGO ── */}
@@ -134,7 +132,12 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             className="lg:hidden mx-5 mt-2 rounded-2xl p-3 shadow-2xl"
-            style={{ background: 'rgba(10,18,48,0.97)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }}
+            style={{
+              background: 'linear-gradient(135deg, rgba(13,21,56,0.98) 0%, rgba(8,16,44,0.98) 40%, rgba(18,12,46,0.98) 100%)',
+              backdropFilter: 'blur(24px)',
+              border: '1px solid rgba(91,138,255,0.15)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.5), 0 0 40px rgba(61,107,240,0.15)',
+            }}
           >
             <a href="#home" className="block px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>Home</a>
             <button onClick={() => setMobileServices(!mobileServices)}

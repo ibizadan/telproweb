@@ -1,21 +1,27 @@
 'use client';
-import { motion } from 'framer-motion';
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative pt-24 pb-10 border-t border-white/5 overflow-hidden">
-      <div className="absolute inset-0 aurora opacity-30" />
+    <footer className="relative pt-20 pb-8 border-t border-white/5 overflow-hidden">
+      <div className="absolute inset-0 aurora opacity-25" />
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-[1.6fr_1fr_1fr] gap-12 mb-16">
+
+        {/* Top grid — logo + links */}
+        <div className="grid md:grid-cols-[1.6fr_1fr_1fr] gap-12 mb-10">
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="flex items-center gap-0" style={{ fontFamily: 'Archivo, sans-serif' }}>
-              <span className="font-black text-[24px] leading-none tracking-tight text-white" style={{ letterSpacing: '-0.02em' }}>TEL</span>
-              <span className="font-black text-[24px] leading-none tracking-tight" style={{ color: '#7eb8ff', letterSpacing: '-0.02em' }}>PRO</span>
-              <span className="ml-2 text-[9px] font-medium tracking-[0.45em] uppercase text-white/30 self-end mb-[3px]">Marketing</span>
-            </div>
+            <div className="mb-5" style={{ fontFamily: 'Archivo, sans-serif' }}>
+              <div className="flex flex-col items-start leading-none">
+                <div className="flex items-baseline gap-0">
+                  <span className="font-black text-[26px] text-white" style={{ letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
+                  <span className="font-black text-[26px]" style={{ color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+                </div>
+                <span className="text-white/30 font-medium uppercase"
+                  style={{ fontSize: '9px', letterSpacing: '0.48em', marginTop: '3px', marginLeft: '0.48em' }}>
+                  Marketing
+                </span>
+              </div>
             </div>
             <p className="text-sm text-ink-200 leading-relaxed mb-6 max-w-sm">
               Web development, SEO, and managed CRM operations for ambitious teams. Engineered in San Diego, California.
@@ -23,8 +29,12 @@ export default function Footer() {
             <div className="space-y-1 text-sm text-ink-300">
               <p>8690 Aero Dr Ste 115 #4181</p>
               <p>San Diego, CA 92123</p>
-              <p className="pt-3"><a href="tel:+18584809719" className="hover:text-white transition">(858) 480-9719</a></p>
-              <p><a href="mailto:hola@telpromarketing.com" className="hover:text-white transition">hola@telpromarketing.com</a></p>
+              <p className="pt-3">
+                <a href="tel:+18584809719" className="hover:text-white transition">(858) 480-9719</a>
+              </p>
+              <p>
+                <a href="mailto:hola@telpromarketing.com" className="hover:text-white transition">hola@telpromarketing.com</a>
+              </p>
             </div>
           </div>
 
@@ -47,29 +57,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Giant wordmark */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="overflow-hidden border-t border-white/5 pt-8 mb-8"
-        >
-          <h2 className="font-display uppercase text-center tracking-wider text-transparent leading-none whitespace-nowrap"
-            style={{
-              fontSize: 'clamp(40px, 16vw, 220px)',
-              WebkitTextStroke: '1px rgba(255,255,255,0.15)',
-              letterSpacing: '0.02em',
-            }}
-          >
-            Telpromarketing
-          </h2>
-        </motion.div>
-
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/5">
+        {/* Bottom bar — copyright only */}
+        <div className="pt-6 border-t border-white/5 flex justify-center">
           <p className="text-xs text-ink-400">© {year} Telpromarketing. All rights reserved.</p>
-          <p className="text-xs text-ink-400">Designed & engineered in San Diego, California.</p>
         </div>
+
       </div>
     </footer>
   );

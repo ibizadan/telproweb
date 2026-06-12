@@ -85,13 +85,13 @@ export default function Hero() {
           Web Development & Managed CRM
         </motion.h2>
 
-        {/* Big headline — Manrope like the About section */}
+        {/* Big headline — exact same style as "A quarter century..." */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
-          className="text-[clamp(44px,7vw,88px)] font-medium leading-[1.08] tracking-[-0.03em] mb-8 max-w-5xl mx-auto text-white"
-          style={{ fontFamily: 'Manrope, sans-serif' }}
+          className="text-[clamp(44px,7vw,88px)] font-bold tracking-tight leading-[1.02] mb-8 max-w-5xl mx-auto"
         >
-          Smarter Websites.<br className="hidden sm:block" /> Stronger Businesses.
+          <span className="text-gradient block">Smarter Websites.</span>
+          <span className="font-serif-italic text-brand-400">Stronger Businesses.</span>
         </motion.h1>
 
         <motion.p
