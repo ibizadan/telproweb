@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 
 const logos = [
   'ModaVerde', 'Constructora Alianza', 'Distribuidora Norte', 'TaskBridge',

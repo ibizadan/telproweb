@@ -1,6 +1,5 @@
 'use client';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const steps = [
   {
@@ -82,10 +81,8 @@ function StepVisual({ kind }: { kind: string }) {
 }
 
 export default function Process() {
-  const ref = useRef<HTMLDivElement>(null);
-
   return (
-    <section ref={ref} className="relative py-32">
+    <section className="relative py-32">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

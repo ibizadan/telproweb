@@ -66,6 +66,7 @@ export default function Navbar() {
                       <a
                         key={s.label}
                         href={s.label === 'CRM' ? '#crm' : '#services'}
+                        onClick={() => setDrop(false)}
                         className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition group"
                       >
                         <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500/20 to-brand-700/10 border border-white/5 flex items-center justify-center text-brand-400 font-mono group-hover:border-brand-400/40 transition">{s.icon}</div>
