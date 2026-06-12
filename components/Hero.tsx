@@ -1,117 +1,110 @@
 'use client';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section ref={ref} id="home" className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
-      <div className="absolute inset-0 aurora" />
-      <div className="absolute inset-0 bg-grid mask-fade-b opacity-40" />
+    <section
+      ref={ref}
+      id="home"
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden"
+    >
+      {/* Video background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="https://images.pexels.com/videos/6804109/pexels-photo-6804109.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          className="w-full h-full object-cover"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/6804109/6804109-hd_1920_1080_25fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Dark overlay for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/60 via-ink-950/70 to-ink-950" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-ink-950/30 to-ink-950/80" />
+      </div>
 
-      {/* Ambient orbs */}
-      <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-20 -left-32 w-[500px] h-[500px] rounded-full"
+      {/* Ambient glow accents */}
+      <div className="absolute top-20 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none z-[1]"
         style={{ background: 'radial-gradient(circle, rgba(91,138,255,0.18), transparent 70%)' }}
       />
-      <motion.div
-        animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-20 -right-32 w-[600px] h-[600px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(181,138,255,0.14), transparent 70%)' }}
+      <div className="absolute bottom-20 -right-32 w-[600px] h-[600px] rounded-full pointer-events-none z-[1]"
+        style={{ background: 'radial-gradient(circle, rgba(181,138,255,0.12), transparent 70%)' }}
       />
 
-      <motion.div style={{ y, opacity, scale }} className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Eyebrow badge */}
+      <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-hi mb-6"
         >
           <div className="relative">
             <div className="absolute inset-0 bg-emerald-400 rounded-full blur-md" />
             <div className="relative w-1.5 h-1.5 bg-emerald-400 rounded-full" />
           </div>
-          <span className="text-[11px] font-medium text-ink-200 tracking-wider uppercase">Now accepting Q3 2026 projects</span>
-          <Sparkles className="w-3 h-3 text-brand-400" />
+          <span className="text-[11px] font-semibold text-white tracking-[0.18em] uppercase">Next-Gen Web & CRM Agency</span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}
-          className="text-[clamp(48px,9vw,128px)] font-bold leading-[0.95] tracking-tight mb-6"
+        {/* Small intro */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-2xl md:text-3xl font-semibold text-ink-100 mb-4 tracking-tight"
         >
-          <span className="block text-gradient">Build the web</span>
-          <span className="block">
-            <span className="font-serif-italic text-brand-400">of</span>{' '}
-            <span className="text-brand-gradient">tomorrow.</span>
-          </span>
+          Web Development & Managed CRM
+        </motion.h2>
+
+        {/* Big headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
+          className="text-[clamp(40px,7vw,84px)] font-bold leading-[1.05] tracking-[-0.035em] mb-8 max-w-5xl mx-auto"
+        >
+          Smarter Websites. <br className="hidden sm:block" />Stronger Businesses.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-xl md:text-2xl text-ink-200 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-lg md:text-xl text-ink-200 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          We engineer high-performance websites and managed CRM operations for ambitious teams.
-          <span className="text-ink-400"> Built in San Diego. Trusted worldwide.</span>
+          We&apos;re Telpromarketing — a web studio that blends WordPress, Next.js, SEO, and CRM operations to make your brand impossible to ignore.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
           className="flex items-center justify-center gap-3 flex-wrap"
         >
-          <a href="#contact" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-white text-ink-950 rounded-full font-display text-[11px] uppercase tracking-wider transition shadow-2xl shadow-white/10 hover:shadow-white/20">
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition" />
-            <span className="relative">Start Your Project</span>
-            <ArrowRight className="relative w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          <a href="#contact" className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white text-ink-950 rounded-full font-semibold text-[14px] hover:bg-ink-100 transition shadow-2xl shadow-black/40">
+            Start Your Project
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="#services" className="inline-flex items-center gap-2 px-7 py-3.5 glass text-white rounded-full font-display text-[11px] uppercase tracking-wider hover:bg-white/10 transition">
-            Explore Services
+          <a href="#process" className="inline-flex items-center gap-2 px-7 py-3.5 glass-hi text-white rounded-full font-semibold text-[14px] hover:bg-white/10 transition">
+            See Our Process
           </a>
         </motion.div>
       </motion.div>
 
-      {/* Floating product preview */}
+      {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -100]) }}
-        className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[90%] max-w-5xl pointer-events-none"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <div className="relative">
-          <div className="absolute inset-x-20 -bottom-10 h-40 bg-brand-500/30 blur-[100px] rounded-full" />
-          <div className="relative glass-hi rounded-2xl p-2 shadow-2xl">
-            <div className="bg-ink-950/80 rounded-xl overflow-hidden">
-              <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
-                <div className="flex-1 mx-3 h-5 bg-white/[0.04] rounded text-[10px] text-ink-400 flex items-center px-3 font-mono">telpromarketing.com</div>
-              </div>
-              <div className="p-6 grid grid-cols-12 gap-4">
-                <div className="col-span-3 space-y-2">
-                  <div className="h-3 bg-white/10 rounded w-full" />
-                  <div className="h-3 bg-white/5 rounded w-2/3" />
-                  <div className="h-3 bg-white/5 rounded w-1/2" />
-                  <div className="h-8 bg-brand-500 rounded mt-3 w-3/4" />
-                </div>
-                <div className="col-span-9 grid grid-cols-3 gap-3">
-                  {[0,1,2].map(i => (
-                    <div key={i} className="aspect-[4/3] rounded-lg bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/5" />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="text-[10px] uppercase tracking-[0.3em] text-ink-300">Scroll</div>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"
+        />
       </motion.div>
     </section>
   );

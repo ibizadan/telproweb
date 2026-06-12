@@ -6,7 +6,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         display: ['Ethnocentric', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
         serif: ['Instrument Serif', 'serif'],
       },
       colors: {

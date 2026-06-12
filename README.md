@@ -129,3 +129,11 @@ telpromarketing/
 - **Service descriptions** — Edit the `services` array in `components/Services.tsx`
 - **Colors** — Edit `tailwind.config.ts` (`brand` color) and `app/globals.css` (`:root` variables)
 - **Wire up the form** — The contact form currently just shows a success message. To actually send emails, integrate with [Resend](https://resend.com), [Formspree](https://formspree.io), or your backend. Update the `submit` handler in `components/Contact.tsx`.
+- **Hero video** — The hero uses a looping background video from Pexels (free for commercial use). To swap it:
+  1. Browse free videos at [pexels.com/videos](https://www.pexels.com/videos/)
+  2. Open a video page, right-click "Free download" and copy the direct `.mp4` URL
+  3. Update the `<source src="...">` in `components/Hero.tsx`
+  4. Update the `poster="..."` image URL to match (same video page → og:image)
+  
+  Or self-host: drop your own video at `public/hero.mp4` and use `src="/hero.mp4"`. This is more reliable but adds to your repo size. Recommended max ~5MB for fast loading.
+- **Fonts** — Currently using Manrope (body) + Ethnocentric (display). Change in `tailwind.config.ts` + `app/globals.css`.
