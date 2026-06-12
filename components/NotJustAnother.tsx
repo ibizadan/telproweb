@@ -30,9 +30,9 @@ export default function NotJustAnother() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center min-h-[500px]">
-        {/* LEFT — rotating knot, canvas bleeds beyond grid cell */}
-        <div className="relative h-[380px] md:h-[560px]">
-          <div className="absolute -inset-x-12 -inset-y-12 md:-inset-x-20 md:-inset-y-20">
+        {/* LEFT — rotating knot, smaller and contained */}
+        <div className="relative h-[300px] md:h-[420px]">
+          <div className="absolute -inset-x-8 -inset-y-8 md:-inset-x-12 md:-inset-y-12">
             <KnotScene scrollYProgress={scrollYProgress} />
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function NotJustAnother() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-[clamp(32px,4.5vw,56px)] font-medium leading-[1.12] tracking-[-0.025em] text-ink-100 mb-10 max-w-xl"
+            className="text-[clamp(24px,3.2vw,40px)] font-medium leading-[1.18] tracking-[-0.02em] text-ink-100 mb-10 max-w-xl"
           >
             We don&apos;t do cookie-cutter websites. We build bold ideas, powered by
             modern code and human craftsmanship, that push boundaries and spark growth.

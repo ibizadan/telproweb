@@ -30,7 +30,7 @@ export default function KnotScene({ scrollYProgress }: Props) {
       <div
         ref={ref}
         className="will-change-transform"
-        style={{ transformStyle: 'preserve-3d', width: 480, maxWidth: '90%' }}
+        style={{ transformStyle: 'preserve-3d', width: 320, maxWidth: '80%' }}
       >
         {/* Glow halo behind the knot */}
         <div

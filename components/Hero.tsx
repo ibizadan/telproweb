@@ -79,36 +79,36 @@ export default function Hero() {
         {/* Small intro */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-2xl md:text-3xl font-semibold text-ink-100 mb-4 tracking-tight"
+          className="text-xl md:text-2xl font-medium mb-5 tracking-tight"
+          style={{ color: 'rgba(200,215,245,0.75)', fontFamily: 'Manrope, sans-serif' }}
         >
           Web Development & Managed CRM
         </motion.h2>
 
-        {/* Big headline */}
+        {/* Big headline — Manrope like the About section */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
-          className="text-[clamp(40px,7vw,84px)] font-bold leading-[1.05] tracking-[-0.035em] mb-8 max-w-5xl mx-auto"
+          className="text-[clamp(44px,7vw,88px)] font-medium leading-[1.08] tracking-[-0.03em] mb-8 max-w-5xl mx-auto text-white"
+          style={{ fontFamily: 'Manrope, sans-serif' }}
         >
-          Smarter Websites. <br className="hidden sm:block" />Stronger Businesses.
+          Smarter Websites.<br className="hidden sm:block" /> Stronger Businesses.
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl text-ink-200 max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          style={{ color: 'rgba(180,195,230,0.8)' }}
         >
           We&apos;re Telpromarketing — a web studio that blends WordPress, Next.js, SEO, and CRM operations to make your brand impossible to ignore.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex items-center justify-center gap-3 flex-wrap"
+          className="flex items-center justify-center"
         >
-          <a href="#contact" className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white text-ink-950 rounded-full font-semibold text-[14px] hover:bg-ink-100 transition shadow-2xl shadow-black/40">
+          <a href="#contact" className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[#07112e] rounded-full font-semibold text-[15px] hover:bg-ink-100 transition shadow-2xl shadow-black/40">
             Start Your Project
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a href="#process" className="inline-flex items-center gap-2 px-7 py-3.5 glass-hi text-white rounded-full font-semibold text-[14px] hover:bg-white/10 transition">
-            See Our Process
           </a>
         </motion.div>
       </motion.div>
