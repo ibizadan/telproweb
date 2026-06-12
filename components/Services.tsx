@@ -35,7 +35,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-32">
+    <section id="services" className="relative py-32" style={{ contain: 'paint' }}>
       <div className="absolute inset-0 bg-grid mask-fade-b opacity-20" />
       <div className="relative max-w-6xl mx-auto px-6">
         <motion.div

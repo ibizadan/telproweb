@@ -11,8 +11,11 @@ export default function Footer() {
         <div className="grid md:grid-cols-[1.6fr_1fr_1fr] gap-12 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-[10px] flex items-center justify-center font-display text-[20px] text-white">T</div>
-              <span className="font-display text-[14px] tracking-wider uppercase">Telpromarketing</span>
+              <div className="flex items-center gap-0" style={{ fontFamily: 'Archivo, sans-serif' }}>
+              <span className="font-black text-[24px] leading-none tracking-tight text-white" style={{ letterSpacing: '-0.02em' }}>TEL</span>
+              <span className="font-black text-[24px] leading-none tracking-tight" style={{ color: '#7eb8ff', letterSpacing: '-0.02em' }}>PRO</span>
+              <span className="ml-2 text-[9px] font-medium tracking-[0.45em] uppercase text-white/30 self-end mb-[3px]">Marketing</span>
+            </div>
             </div>
             <p className="text-sm text-ink-200 leading-relaxed mb-6 max-w-sm">
               Web development, SEO, and managed CRM operations for ambitious teams. Engineered in San Diego, California.

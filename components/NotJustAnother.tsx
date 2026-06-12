@@ -1,18 +1,8 @@
 'use client';
 import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
-import dynamic from 'next/dynamic';
 import { ArrowRight } from 'lucide-react';
-
-// Dynamically load the 3D scene (no SSR) — avoids hydration issues with WebGL
-const KnotScene = dynamic(() => import('./KnotScene'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-16 h-16 rounded-full border-2 border-white/10 border-t-orange-400 animate-spin" />
-    </div>
-  ),
-});
+import KnotScene from './KnotScene';
 
 export default function NotJustAnother() {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,9 +30,9 @@ export default function NotJustAnother() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center min-h-[500px]">
-        {/* LEFT — 3D rotating chrome torus knot (canvas bleeds beyond cell so it never looks boxed) */}
-        <div className="relative h-[400px] md:h-[600px]">
-          <div className="absolute -inset-x-24 -inset-y-20 md:-inset-x-32 md:-inset-y-28">
+        {/* LEFT — rotating knot, canvas bleeds beyond grid cell */}
+        <div className="relative h-[380px] md:h-[560px]">
+          <div className="absolute -inset-x-12 -inset-y-12 md:-inset-x-20 md:-inset-y-20">
             <KnotScene scrollYProgress={scrollYProgress} />
           </div>
         </div>

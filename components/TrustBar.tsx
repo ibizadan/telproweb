@@ -7,7 +7,7 @@ const logos = [
 
 export default function TrustBar() {
   return (
-    <section className="relative pt-72 pb-16 border-t border-white/5 mt-32">
+    <section className="relative py-16 border-t border-white/5">
       <div className="max-w-6xl mx-auto px-6 mb-8 text-center">
         <p className="text-[11px] uppercase tracking-[0.3em] text-ink-400 font-medium">
           Trusted by teams building the future

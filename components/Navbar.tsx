@@ -37,12 +37,10 @@ export default function Navbar() {
           scrolled ? 'glass-hi shadow-2xl' : 'bg-transparent'
         }`}>
           {/* Logo */}
-          <Link href="#home" className="flex items-center gap-2.5 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-brand-500/40 blur-md group-hover:blur-lg transition-all" />
-              <div className="relative w-9 h-9 bg-gradient-to-br from-brand-500 to-brand-700 rounded-[10px] flex items-center justify-center font-display text-[18px] text-white">T</div>
-            </div>
-            <span className="font-display text-[13px] tracking-wider uppercase whitespace-nowrap">Telpromarketing</span>
+          <Link href="#home" className="flex items-center gap-0 group mr-auto" style={{ fontFamily: 'Archivo, sans-serif' }}>
+            <span className="font-black text-[22px] leading-none tracking-tight text-white" style={{ letterSpacing: '-0.02em' }}>TEL</span>
+            <span className="font-black text-[22px] leading-none tracking-tight" style={{ color: '#7eb8ff', letterSpacing: '-0.02em' }}>PRO</span>
+            <span className="ml-2 text-[9px] font-medium tracking-[0.45em] uppercase text-white/30 self-end mb-[3px]">Marketing</span>
           </Link>
 
           {/* Center Menu */}
