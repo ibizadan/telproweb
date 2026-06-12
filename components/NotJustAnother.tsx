@@ -40,9 +40,11 @@ export default function NotJustAnother() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center min-h-[500px]">
-        {/* LEFT — 3D rotating chrome torus knot */}
+        {/* LEFT — 3D rotating chrome torus knot (canvas bleeds beyond cell so it never looks boxed) */}
         <div className="relative h-[400px] md:h-[600px]">
-          <KnotScene scrollYProgress={scrollYProgress} />
+          <div className="absolute -inset-x-24 -inset-y-20 md:-inset-x-32 md:-inset-y-28">
+            <KnotScene scrollYProgress={scrollYProgress} />
+          </div>
         </div>
 
         {/* RIGHT — copy */}

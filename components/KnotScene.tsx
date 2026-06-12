@@ -12,7 +12,7 @@ interface Props {
 export default function KnotScene({ scrollYProgress }: Props) {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
+      camera={{ position: [0, 0, 6.5], fov: 42 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
     >

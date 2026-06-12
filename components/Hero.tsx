@@ -25,15 +25,34 @@ export default function Hero() {
           preload="auto"
           poster="https://images.pexels.com/videos/6804109/pexels-photo-6804109.jpeg?auto=compress&cs=tinysrgb&w=1600"
           className="w-full h-full object-cover"
+          style={{
+            filter: 'saturate(0.85) contrast(1.08) brightness(0.75) sepia(0.15) hue-rotate(-8deg)',
+          }}
         >
           <source
             src="https://videos.pexels.com/video-files/6804109/6804109-hd_1920_1080_25fps.mp4"
             type="video/mp4"
           />
         </video>
+        {/* Warm orange wash from bottom-left, like the reference */}
+        <div
+          className="absolute inset-0 mix-blend-overlay"
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 80% at 15% 85%, rgba(255, 110, 40, 0.55) 0%, transparent 55%)',
+          }}
+        />
+        {/* Cool teal counter-light from top-right */}
+        <div
+          className="absolute inset-0 mix-blend-soft-light"
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 60% at 85% 15%, rgba(80, 180, 160, 0.4) 0%, transparent 55%)',
+          }}
+        />
         {/* Dark overlay for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/60 via-ink-950/70 to-ink-950" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/80 via-ink-950/30 to-ink-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/55 via-ink-950/65 to-ink-950" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/75 via-ink-950/25 to-ink-950/75" />
       </div>
 
       {/* Ambient glow accents */}
