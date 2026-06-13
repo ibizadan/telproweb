@@ -35,11 +35,11 @@ export default function Navbar() {
         <div
           className="flex items-center gap-6 rounded-2xl px-6 py-3"
           style={{
-            background: 'linear-gradient(135deg, rgba(13,21,56,0.97) 0%, rgba(8,16,44,0.97) 40%, rgba(18,12,46,0.97) 100%)',
+            background: 'linear-gradient(90deg, rgba(15,28,80,0.98) 0%, rgba(30,60,180,0.95) 25%, rgba(40,80,220,0.95) 50%, rgba(30,60,180,0.95) 75%, rgba(15,28,80,0.98) 100%)',
             backdropFilter: 'blur(24px) saturate(200%)',
             WebkitBackdropFilter: 'blur(24px) saturate(200%)',
-            border: '1px solid rgba(91,138,255,0.18)',
-            boxShadow: '0 0 0 1px rgba(91,138,255,0.08), 0 8px 32px rgba(0,0,0,0.5), 0 0 60px rgba(61,107,240,0.18), 0 0 120px rgba(61,107,240,0.08)',
+            border: '1px solid rgba(100,150,255,0.35)',
+            boxShadow: '0 0 0 1px rgba(80,130,255,0.15), 0 4px 24px rgba(30,60,200,0.45), 0 0 80px rgba(40,80,255,0.22), 0 0 160px rgba(30,60,200,0.12)',
           }}
         >
           {/* ── LOGO ── */}
@@ -133,10 +133,10 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             className="lg:hidden mx-5 mt-2 rounded-2xl p-3 shadow-2xl"
             style={{
-              background: 'linear-gradient(135deg, rgba(13,21,56,0.98) 0%, rgba(8,16,44,0.98) 40%, rgba(18,12,46,0.98) 100%)',
+              background: 'linear-gradient(180deg, rgba(30,60,180,0.98) 0%, rgba(20,40,130,0.98) 60%, rgba(15,28,80,0.99) 100%)',
               backdropFilter: 'blur(24px)',
-              border: '1px solid rgba(91,138,255,0.15)',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.5), 0 0 40px rgba(61,107,240,0.15)',
+              border: '1px solid rgba(100,150,255,0.3)',
+              boxShadow: '0 8px 32px rgba(30,60,200,0.5), 0 0 60px rgba(40,80,255,0.2)',
             }}
           >
             <a href="#home" className="block px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>Home</a>
