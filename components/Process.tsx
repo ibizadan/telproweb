@@ -17,13 +17,13 @@ const steps = [
   {
     num: '03',
     title: 'Engineer',
-    desc: 'We ship production-grade code on modern frameworks — fast, accessible, SEO-ready, and built to scale with you.',
+    desc: 'We ship production-grade code on modern frameworks — fast, accessible, and built to scale with you.',
     visual: 'engineer',
   },
   {
     num: '04',
     title: 'Operate',
-    desc: 'We do not disappear after launch. Managed hosting, CRM operations, SEO retainers, and continuous improvements.',
+    desc: 'We do not disappear after launch. Managed hosting, CRM operations, and continuous improvements.',
     visual: 'operate',
   },
 ];

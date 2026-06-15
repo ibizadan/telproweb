@@ -25,11 +25,6 @@ export default function About() {
             <span className="text-gradient">A quarter century of</span><br/>
             <span className="font-serif-italic text-brand-400">building the web.</span>
           </h2>
-          <p className="text-xl text-ink-200 leading-relaxed">
-            We are a small, senior team headquartered in San Diego, California. For 25 years
-            we have been writing software, designing interfaces, and operating CRM systems
-            for businesses ranging from local startups to multinational distributors.
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-5 mb-20">

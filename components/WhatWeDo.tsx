@@ -1,11 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Globe2, Code2, Search, Database, ArrowUpRight } from 'lucide-react';
+import { Globe2, Code2, Database, ArrowUpRight } from 'lucide-react';
 
 const items = [
   { icon: Globe2, title: 'WordPress Websites', desc: 'Custom themes, blocks, and WooCommerce — built for editors, fast for visitors.' },
   { icon: Code2, title: 'Next.js Applications', desc: 'High-performance React apps with edge deployment and headless integrations.' },
-  { icon: Search, title: 'SEO & Growth', desc: 'Technical audits, content strategy, and rankings that compound month over month.' },
   { icon: Database, title: 'Managed CRM', desc: 'Server operations, data migration, backups, security, and team training — handled.' },
 ];
 
@@ -27,7 +26,7 @@ export default function WhatWeDo() {
             </h2>
           </div>
           <p className="text-ink-200 text-lg leading-relaxed md:text-right md:max-w-md md:ml-auto">
-            Web, SEO, and CRM operations in perfect sync — engineered for businesses that intend to last.
+            Web development and CRM operations in perfect sync — engineered for businesses that intend to last.
           </p>
         </motion.div>
 

@@ -99,7 +99,7 @@ export default function Hero() {
           className="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
           style={{ color: 'rgba(180,195,230,0.8)' }}
         >
-          We&apos;re Telpromarketing — a web studio that blends WordPress, Next.js, SEO, and CRM operations to make your brand impossible to ignore.
+          We&apos;re Telpromarketing — a web studio that blends WordPress, Next.js, and CRM operations to make your brand impossible to ignore.
         </motion.p>
 
         <motion.div

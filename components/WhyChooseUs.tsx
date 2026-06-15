@@ -4,7 +4,7 @@ import { Sparkles, Layers, Award, TrendingUp, ArrowUpRight } from 'lucide-react'
 
 const reasons = [
   { icon: Sparkles, title: 'Senior Craftsmanship', desc: 'Twenty-five years of building the web. We anticipate problems before they happen.' },
-  { icon: Layers, title: 'Full Stack Studio', desc: 'Design, development, SEO, and CRM operations — under one roof, with one accountable team.' },
+  { icon: Layers, title: 'Full Stack Studio', desc: 'Design, development, and CRM operations — under one roof, with one accountable team.' },
   { icon: Award, title: 'Proven Track Record', desc: 'From local startups to multinational distributors — our work scales with your ambition.' },
   { icon: TrendingUp, title: 'Growth First', desc: 'We measure success in your traffic, conversions, and retention — not in design awards.' },
 ];

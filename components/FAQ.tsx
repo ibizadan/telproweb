@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: 'What happens after my website launches?',
-    a: 'We do not disappear. We offer managed hosting, ongoing SEO retainers, CRM operations, and continuous improvements. Most of our clients stay with us long after launch — that is the relationship we build for.',
+    a: 'We do not disappear. We offer managed hosting, CRM operations, and continuous improvements. Most of our clients stay with us long after launch — that is the relationship we build for.',
   },
 ];
 

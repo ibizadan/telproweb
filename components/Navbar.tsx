@@ -7,20 +7,27 @@ import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 const services = [
   { label: 'WordPress', desc: 'Custom themes & WooCommerce', icon: '◯', href: '#services' },
   { label: 'Next.js', desc: 'High-performance web apps', icon: '◢', href: '#services' },
-  { label: 'SEO', desc: 'Organic growth engineering', icon: '◐', href: '#services' },
   { label: 'CRM', desc: 'Managed customer operations', icon: '◇', href: '#crm' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [drop, setDrop] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
 
+  /* Laser animation offset — cycles 0→100 every 3s */
+  const [laser, setLaser] = useState(0);
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', h);
-    return () => window.removeEventListener('scroll', h);
+    let raf = 0;
+    let start = performance.now();
+    const tick = (now: number) => {
+      const elapsed = now - start;
+      const period = 3000; // 3 seconds per lap
+      setLaser((elapsed % period) / period);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
@@ -29,100 +36,140 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50"
-      style={{ padding: scrolled ? '10px 0' : '14px 0', transition: 'padding 0.4s' }}
+      style={{ padding: '12px 0' }}
     >
       <div className="mx-auto max-w-7xl px-5">
-        <div
-          className="flex items-center gap-6 rounded-2xl px-6 py-3"
-          style={{
-            background: 'linear-gradient(90deg, rgba(15,28,80,0.98) 0%, rgba(30,60,180,0.95) 25%, rgba(40,80,220,0.95) 50%, rgba(30,60,180,0.95) 75%, rgba(15,28,80,0.98) 100%)',
-            backdropFilter: 'blur(24px) saturate(200%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(200%)',
-            border: '1px solid rgba(100,150,255,0.35)',
-            boxShadow: '0 0 0 1px rgba(80,130,255,0.15), 0 4px 24px rgba(30,60,200,0.45), 0 0 80px rgba(40,80,255,0.22), 0 0 160px rgba(30,60,200,0.12)',
-          }}
-        >
-          {/* ── LOGO ── */}
-          <Link href="#home" className="mr-auto flex flex-col items-center leading-none group" style={{ fontFamily: 'Archivo, sans-serif' }}>
-            <div className="flex items-baseline gap-0">
-              <span className="font-black text-[28px] text-white" style={{ letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-              <span className="font-black text-[28px]" style={{ color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
-            </div>
-            <span
-              className="text-white/35 font-medium uppercase"
-              style={{ fontSize: '9px', letterSpacing: '0.48em', marginTop: '2px', lineHeight: 1, marginLeft: '0.48em' }}
+        {/* Laser border container */}
+        <div className="relative rounded-2xl" style={{ padding: '1.5px' }}>
+
+          {/* ── Laser conic glow that orbits the border ── */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden"
+            style={{ zIndex: 0 }}
+          >
+            <div
+              className="absolute"
+              style={{
+                inset: '-2px',
+                borderRadius: 'inherit',
+                background: `conic-gradient(
+                  from ${laser * 360}deg at 50% 50%,
+                  transparent 0deg,
+                  rgba(120,170,255,0.9) 30deg,
+                  rgba(180,220,255,1) 45deg,
+                  rgba(120,170,255,0.9) 60deg,
+                  transparent 90deg,
+                  transparent 360deg
+                )`,
+                filter: 'blur(1.5px)',
+              }}
+            />
+          </div>
+
+          {/* ── Nav pill ── */}
+          <div
+            className="relative flex items-center gap-6 rounded-2xl px-6 py-3"
+            style={{
+              zIndex: 1,
+              /* Diagonal gradient: bright electric-blue top-left → dark navy bottom-right */
+              background: `linear-gradient(
+                135deg,
+                rgba(10,20,68,0.98)  0%,
+                rgba(22,52,160,0.96) 30%,
+                rgba(35,75,210,0.95) 55%,
+                rgba(18,36,100,0.97) 78%,
+                rgba(8,14,52,0.98)   100%
+              )`,
+              backdropFilter: 'blur(24px) saturate(200%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+            }}
+          >
+            {/* ── LOGO ── */}
+            <Link href="#home"
+              className="flex flex-col items-center leading-none mr-auto"
+              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none' }}
             >
-              Marketing
-            </span>
-          </Link>
+              <div className="flex items-baseline">
+                <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
+                <span className="font-black" style={{ fontSize: 28, color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+              </div>
+              <span style={{ fontSize: 9, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 2, marginLeft: '0.48em' }}>
+                Marketing
+              </span>
+            </Link>
 
-          {/* ── DESKTOP MENU ── */}
-          <ul className="hidden lg:flex items-center gap-0 mx-auto">
-            <li>
-              <a href="#home" className="px-4 py-2 text-[15px] font-medium hover:text-white transition-colors"
-                style={{ color: 'rgba(200,210,240,0.85)' }}>Home</a>
-            </li>
-            <li className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
-              <button className="flex items-center gap-1 px-4 py-2 text-[15px] font-medium hover:text-white transition-colors"
-                style={{ color: 'rgba(200,210,240,0.85)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
-                Services
-                <ChevronDown className={`w-4 h-4 transition-transform ${drop ? 'rotate-180' : ''}`} />
-              </button>
-              <AnimatePresence>
-                {drop && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[300px] rounded-2xl p-2 shadow-2xl"
-                    style={{ background: 'rgba(10,18,48,0.97)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.1)' }}
-                  >
-                    {services.map(s => (
-                      <a key={s.label} href={s.href} onClick={() => setDrop(false)}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition group">
-                        <div className="w-9 h-9 rounded-lg flex items-center justify-center text-brand-400 font-mono"
-                          style={{ background: 'rgba(91,138,255,0.12)', border: '1px solid rgba(91,138,255,0.2)' }}>{s.icon}</div>
-                        <div>
-                          <div className="text-[14px] font-semibold text-white">{s.label}</div>
-                          <div className="text-[11px]" style={{ color: 'rgba(160,175,210,0.7)' }}>{s.desc}</div>
-                        </div>
-                      </a>
-                    ))}
-                    <div className="border-t mt-2 pt-3 px-3 pb-2 flex items-center justify-between" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-                      <span className="text-[11px]" style={{ color: 'rgba(160,175,210,0.6)' }}>Every project starts with a conversation</span>
-                      <a href="#contact" onClick={() => setDrop(false)} className="text-[11px] font-semibold text-brand-400 inline-flex items-center gap-1">
-                        Get in Touch <ArrowUpRight className="w-3 h-3" />
-                      </a>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </li>
-            <li>
-              <a href="#process" className="px-4 py-2 text-[15px] font-medium hover:text-white transition-colors"
-                style={{ color: 'rgba(200,210,240,0.85)' }}>Process</a>
-            </li>
-            <li>
-              <a href="#about" className="px-4 py-2 text-[15px] font-medium hover:text-white transition-colors"
-                style={{ color: 'rgba(200,210,240,0.85)' }}>About</a>
-            </li>
-            <li>
-              <a href="#contact" className="px-4 py-2 text-[15px] font-medium hover:text-white transition-colors"
-                style={{ color: 'rgba(200,210,240,0.85)' }}>Contact</a>
-            </li>
-          </ul>
+            {/* ── DESKTOP MENU ── */}
+            <ul className="hidden lg:flex items-center gap-0 mx-auto" style={{ listStyle: 'none' }}>
+              {[['Home','#home'],['About','#about'],['Contact','#contact']].map(([l,h]) => (
+                <li key={l}>
+                  <a href={h} style={{ padding: '8px 18px', fontSize: 15, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
+                    onMouseEnter={e => (e.currentTarget.style.color='#fff')}
+                    onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+                  >{l}</a>
+                </li>
+              ))}
+              {/* Services dropdown */}
+              <li className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
+                <button
+                  style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'8px 18px', fontSize:15, fontWeight:500, color:'rgba(225,235,255,0.9)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif' }}
+                  onMouseEnter={e => (e.currentTarget.style.color='#fff')}
+                  onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+                >
+                  Services
+                  <ChevronDown style={{ width:14, height:14, transition:'transform 0.2s', transform: drop ? 'rotate(180deg)' : 'none' }} />
+                </button>
+                <AnimatePresence>
+                  {drop && (
+                    <motion.div
+                      initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:8 }}
+                      transition={{ duration: 0.18 }}
+                      style={{
+                        position:'absolute', top:'calc(100% + 8px)', left:'50%', transform:'translateX(-50%)',
+                        width:280, background:'rgba(8,16,60,0.97)',
+                        backdropFilter:'blur(24px)', border:'1px solid rgba(91,138,255,0.2)',
+                        borderRadius:16, padding:6, boxShadow:'0 20px 60px rgba(0,0,0,0.6)',
+                        zIndex:200,
+                      }}
+                    >
+                      {services.map(s => (
+                        <a key={s.label} href={s.href} onClick={() => setDrop(false)}
+                          style={{ display:'flex', alignItems:'center', gap:12, padding:'10px 12px', borderRadius:10, textDecoration:'none' }}
+                          onMouseEnter={e => (e.currentTarget.style.background='rgba(255,255,255,0.04)')}
+                          onMouseLeave={e => (e.currentTarget.style.background='transparent')}
+                        >
+                          <div style={{ width:36, height:36, borderRadius:9, background:'rgba(91,138,255,0.12)', border:'1px solid rgba(91,138,255,0.2)', display:'flex', alignItems:'center', justifyContent:'center', color:'#5b8aff', fontFamily:'monospace', flexShrink:0 }}>{s.icon}</div>
+                          <div>
+                            <div style={{ fontSize:14, fontWeight:600, color:'#fff' }}>{s.label}</div>
+                            <div style={{ fontSize:11, color:'rgba(160,175,210,0.65)', marginTop:1 }}>{s.desc}</div>
+                          </div>
+                        </a>
+                      ))}
+                      <div style={{ borderTop:'1px solid rgba(255,255,255,0.06)', margin:'6px 0 0', padding:'10px 12px 6px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+                        <span style={{ fontSize:11, color:'rgba(160,175,210,0.5)' }}>Every project starts with a conversation</span>
+                        <a href="#contact" onClick={() => setDrop(false)} style={{ fontSize:11, fontWeight:600, color:'#5b8aff', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:3 }}>
+                          Contact <ArrowUpRight style={{ width:11, height:11 }} />
+                        </a>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </li>
+            </ul>
 
-          {/* ── GET STARTED ── */}
-          <a href="#contact"
-            className="hidden lg:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full font-semibold text-[14px] transition-transform hover:scale-[1.03] shadow-lg"
-            style={{ background: '#fff', color: '#07112e' }}>
-            Get Started
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+            {/* ── GET STARTED ── */}
+            <a href="#contact"
+              className="hidden lg:inline-flex items-center gap-1.5 rounded-full font-semibold transition-transform hover:scale-[1.03]"
+              style={{ padding:'10px 22px', background:'#fff', color:'#07112e', fontSize:14, textDecoration:'none' }}
+            >
+              Get Started <ArrowUpRight style={{ width:14, height:14 }} />
+            </a>
 
-          {/* ── MOBILE BURGER ── */}
-          <button onClick={() => setMobile(!mobile)} className="lg:hidden ml-auto p-2 text-white">
-            {mobile ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+            {/* ── MOBILE BURGER ── */}
+            <button onClick={() => setMobile(!mobile)} className="lg:hidden ml-auto p-2 text-white" style={{ background:'none', border:'none', cursor:'pointer' }}>
+              {mobile ? <X style={{ width:20, height:20 }} /> : <Menu style={{ width:20, height:20 }} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -130,33 +177,36 @@ export default function Navbar() {
       <AnimatePresence>
         {mobile && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden mx-5 mt-2 rounded-2xl p-3 shadow-2xl"
+            initial={{ opacity:0, y:-10 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:-10 }}
             style={{
-              background: 'linear-gradient(180deg, rgba(30,60,180,0.98) 0%, rgba(20,40,130,0.98) 60%, rgba(15,28,80,0.99) 100%)',
-              backdropFilter: 'blur(24px)',
-              border: '1px solid rgba(100,150,255,0.3)',
-              boxShadow: '0 8px 32px rgba(30,60,200,0.5), 0 0 60px rgba(40,80,255,0.2)',
+              margin:'8px 20px 0', borderRadius:18, padding:12,
+              background:'linear-gradient(135deg,rgba(10,20,68,0.98) 0%,rgba(22,52,160,0.97) 50%,rgba(8,14,52,0.98) 100%)',
+              backdropFilter:'blur(24px)', border:'1px solid rgba(91,138,255,0.2)',
+              boxShadow:'0 8px 32px rgba(0,0,0,0.5)',
             }}
           >
-            <a href="#home" className="block px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>Home</a>
+            {[['Home','#home'],['About','#about'],['Contact','#contact']].map(([l,h]) => (
+              <a key={l} href={h} onClick={() => setMobile(false)}
+                style={{ display:'block', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
+              >{l}</a>
+            ))}
             <button onClick={() => setMobileServices(!mobileServices)}
-              className="w-full flex items-center justify-between px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5"
-              style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
-              Services
-              <ChevronDown className={`w-4 h-4 transition-transform ${mobileServices ? 'rotate-180' : ''}`} />
+              style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif', borderRadius:10 }}
+            >
+              Services <ChevronDown style={{ width:14, height:14, transform: mobileServices ? 'rotate(180deg)' : 'none', transition:'transform 0.2s' }} />
             </button>
             {mobileServices && (
-              <div className="ml-3 mt-1 border-l-2 border-white/10 pl-3 space-y-1">
+              <div style={{ marginLeft:12, borderLeft:'2px solid rgba(91,138,255,0.2)', paddingLeft:12 }}>
                 {services.map(s => (
-                  <a key={s.label} href={s.href} className="block px-3 py-2 text-[14px] text-white/60 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>{s.label}</a>
+                  <a key={s.label} href={s.href} onClick={() => setMobile(false)}
+                    style={{ display:'block', padding:'8px 12px', fontSize:14, color:'rgba(200,215,255,0.7)', textDecoration:'none' }}
+                  >{s.label}</a>
                 ))}
               </div>
             )}
-            <a href="#process" className="block px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>Process</a>
-            <a href="#about" className="block px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>About</a>
-            <a href="#contact" className="block px-3 py-2.5 text-[15px] text-white/80 rounded-lg hover:bg-white/5" onClick={() => setMobile(false)}>Contact</a>
-            <a href="#contact" className="block mt-2 px-4 py-3 bg-white text-[#07112e] rounded-xl text-center font-semibold text-[15px]" onClick={() => setMobile(false)}>Get Started</a>
+            <a href="#contact" onClick={() => setMobile(false)}
+              style={{ display:'block', marginTop:10, padding:'13px 20px', background:'#fff', color:'#07112e', borderRadius:12, textAlign:'center', fontWeight:600, fontSize:15, textDecoration:'none' }}
+            >Get Started</a>
           </motion.div>
         )}
       </AnimatePresence>

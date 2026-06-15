@@ -98,7 +98,6 @@ export default function Contact() {
                       <option value="" className="bg-ink-950">Select a service…</option>
                       <option className="bg-ink-950">WordPress Website</option>
                       <option className="bg-ink-950">Next.js Application</option>
-                      <option className="bg-ink-950">SEO Services</option>
                       <option className="bg-ink-950">Managed CRM</option>
                       <option className="bg-ink-950">CRM Migration</option>
                       <option className="bg-ink-950">Not sure yet</option>

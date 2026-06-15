@@ -4,7 +4,7 @@ const phrases = [
   'Built for ambitious teams',
   'Engineered for performance',
   'Designed in San Diego',
-  'WordPress · Next.js · SEO · CRM',
+  'WordPress · Next.js · CRM',
 ];
 
 export default function MarqueeTagline() {

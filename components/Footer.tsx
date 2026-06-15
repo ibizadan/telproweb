@@ -24,7 +24,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-ink-200 leading-relaxed mb-6 max-w-sm">
-              Web development, SEO, and managed CRM operations for ambitious teams. Engineered in San Diego, California.
+              Web development and managed CRM operations for ambitious teams. Engineered in San Diego, California.
             </p>
             <div className="space-y-1 text-sm text-ink-300">
               <p>8690 Aero Dr Ste 115 #4181</p>
@@ -41,7 +41,7 @@ export default function Footer() {
           <div>
             <div className="text-[11px] uppercase tracking-[0.2em] text-ink-400 font-medium mb-4">Services</div>
             <ul className="space-y-2.5">
-              {['WordPress', 'Next.js', 'SEO', 'Managed CRM'].map(s => (
+              {['WordPress', 'Next.js', 'Managed CRM'].map(s => (
                 <li key={s}><a href="#services" className="text-sm text-ink-200 hover:text-white transition">{s}</a></li>
               ))}
             </ul>
