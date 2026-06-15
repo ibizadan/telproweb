@@ -153,7 +153,80 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-32 overflow-hidden">
+      {/* Base aurora */}
       <div className="absolute inset-0 aurora opacity-50" />
+
+      {/* ── Orb glows — same as contact section ── */}
+      <div className="absolute pointer-events-none" style={{
+        top: '-10%', right: '-5%', width: 600, height: 600,
+        background: 'radial-gradient(circle, rgba(35,75,210,0.2) 0%, transparent 65%)',
+        filter: 'blur(40px)',
+      }} />
+      <div className="absolute pointer-events-none" style={{
+        bottom: '-5%', left: '-8%', width: 500, height: 500,
+        background: 'radial-gradient(circle, rgba(22,52,160,0.16) 0%, transparent 65%)',
+        filter: 'blur(40px)',
+      }} />
+
+      {/* ── Circuit / network graphic — identical to contact ── */}
+      <svg
+        viewBox="0 0 1440 900"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid slice"
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ opacity: 0.06 }}
+      >
+        {/* dot grid */}
+        <g fill="white" opacity="0.8">
+          {[80,160,240,320,400,480,560,640,720,800,880,960,1040,1120,1200,1280,1360].map(cx => (
+            <circle key={cx} cx={cx} cy="80" r="1.5"/>
+          ))}
+          {[80,240,480,640,880,1120,1360].map(cx => (
+            <circle key={cx} cx={cx} cy="200" r="1.5"/>
+          ))}
+          {[160,400,640,960,1200].map(cx => (
+            <circle key={cx} cx={cx} cy="360" r="1.5"/>
+          ))}
+          {[80,320,560,800,1040,1280].map(cx => (
+            <circle key={cx} cx={cx} cy="520" r="1.5"/>
+          ))}
+          {[160,480,720,960,1200].map(cx => (
+            <circle key={cx} cx={cx} cy="680" r="1.5"/>
+          ))}
+        </g>
+        {/* circuit lines */}
+        <g stroke="white" strokeWidth="0.7" fill="none" opacity="0.9">
+          <path d="M80 80 L320 80 L320 200 L480 200"/>
+          <path d="M640 80 L640 200 L880 200 L880 80"/>
+          <path d="M1120 80 L1120 200 L1360 200 L1360 80"/>
+          <path d="M160 360 L400 360 L400 200"/>
+          <path d="M960 360 L960 200 L1120 200"/>
+          <path d="M640 360 L640 520 L800 520"/>
+          <path d="M160 360 L160 520 L320 520"/>
+          <path d="M1040 520 L1200 520 L1200 360"/>
+          <path d="M320 520 L320 680 L480 680"/>
+          <path d="M720 680 L720 520 L800 520"/>
+          <path d="M960 680 L960 520"/>
+          <path d="M1200 680 L1200 520"/>
+          <path d="M480 680 L720 680"/>
+          <path d="M960 680 L1200 680"/>
+        </g>
+        {/* nodes */}
+        <g fill="white">
+          <circle cx="320" cy="200" r="4"/><circle cx="640" cy="200" r="4"/>
+          <circle cx="880" cy="200" r="4"/><circle cx="400" cy="360" r="4"/>
+          <circle cx="640" cy="360" r="4"/><circle cx="960" cy="360" r="4"/>
+          <circle cx="320" cy="520" r="4"/><circle cx="800" cy="520" r="4"/>
+          <circle cx="1040" cy="520" r="4"/><circle cx="480" cy="680" r="4"/>
+          <circle cx="720" cy="680" r="4"/><circle cx="960" cy="680" r="4"/>
+        </g>
+      </svg>
+
+      {/* ── Dot grid overlay ── */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: 'radial-gradient(rgba(120,150,255,0.07) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+      }} />
       <div className="relative max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
