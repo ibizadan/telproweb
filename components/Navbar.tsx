@@ -125,16 +125,28 @@ export default function Navbar() {
                       transition={{ duration: 0.18 }}
                       style={{
                         position:'absolute', top:'calc(100% + 8px)', left:'50%', transform:'translateX(-50%)',
-                        width:280, background:'rgba(8,16,60,0.97)',
-                        backdropFilter:'blur(24px)', border:'1px solid rgba(91,138,255,0.2)',
-                        borderRadius:16, padding:6, boxShadow:'0 20px 60px rgba(0,0,0,0.6)',
+                        width:290,
+                        /* Exact same gradient as the nav pill */
+                        background:`linear-gradient(
+                          135deg,
+                          rgba(10,20,68,0.98)  0%,
+                          rgba(22,52,160,0.96) 30%,
+                          rgba(35,75,210,0.95) 55%,
+                          rgba(18,36,100,0.97) 78%,
+                          rgba(8,14,52,0.98)   100%
+                        )`,
+                        backdropFilter:'blur(24px) saturate(200%)',
+                        WebkitBackdropFilter:'blur(24px) saturate(200%)',
+                        border:'1px solid rgba(100,150,255,0.3)',
+                        borderRadius:16, padding:6,
+                        boxShadow:'0 0 0 1px rgba(80,130,255,0.1), 0 8px 32px rgba(0,0,0,0.6), 0 0 60px rgba(40,80,255,0.15)',
                         zIndex:200,
                       }}
                     >
                       {services.map(s => (
                         <a key={s.label} href={s.href} onClick={() => setDrop(false)}
                           style={{ display:'flex', alignItems:'center', gap:12, padding:'10px 12px', borderRadius:10, textDecoration:'none' }}
-                          onMouseEnter={e => (e.currentTarget.style.background='rgba(255,255,255,0.04)')}
+                          onMouseEnter={e => (e.currentTarget.style.background='rgba(255,255,255,0.07)')}
                           onMouseLeave={e => (e.currentTarget.style.background='transparent')}
                         >
                           <div style={{ width:36, height:36, borderRadius:9, background:'rgba(91,138,255,0.12)', border:'1px solid rgba(91,138,255,0.2)', display:'flex', alignItems:'center', justifyContent:'center', color:'#5b8aff', fontFamily:'monospace', flexShrink:0 }}>{s.icon}</div>
@@ -144,9 +156,9 @@ export default function Navbar() {
                           </div>
                         </a>
                       ))}
-                      <div style={{ borderTop:'1px solid rgba(255,255,255,0.06)', margin:'6px 0 0', padding:'10px 12px 6px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
-                        <span style={{ fontSize:11, color:'rgba(160,175,210,0.5)' }}>Every project starts with a conversation</span>
-                        <a href="#contact" onClick={() => setDrop(false)} style={{ fontSize:11, fontWeight:600, color:'#5b8aff', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:3 }}>
+                      <div style={{ borderTop:'1px solid rgba(150,180,255,0.1)', margin:'6px 0 0', padding:'10px 12px 6px', display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+                        <span style={{ fontSize:11, color:'rgba(200,220,255,0.45)' }}>Every project starts with a conversation</span>
+                        <a href="#contact" onClick={() => setDrop(false)} style={{ fontSize:11, fontWeight:600, color:'#7eb8ff', textDecoration:'none', display:'inline-flex', alignItems:'center', gap:3 }}>
                           Contact <ArrowUpRight style={{ width:11, height:11 }} />
                         </a>
                       </div>

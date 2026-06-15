@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { Globe2, Code2, Database, ArrowUpRight } from 'lucide-react';
 
 const items = [
@@ -7,29 +8,85 @@ const items = [
     icon: Globe2,
     title: 'WordPress Websites',
     desc: 'Custom themes, blocks, and WooCommerce — built for editors, fast for visitors.',
-    accent: 'rgba(91,138,255,0.6)',
+    accent: '#5b8aff',
   },
   {
     icon: Code2,
     title: 'Next.js Applications',
     desc: 'High-performance React apps with edge deployment and headless integrations.',
-    accent: 'rgba(123,92,255,0.6)',
+    accent: '#7b5cff',
   },
   {
     icon: Database,
     title: 'Managed CRM',
     desc: 'Server operations, data migration, backups, security, and team training — handled.',
-    accent: 'rgba(62,207,142,0.6)',
+    accent: '#3ecf8e',
   },
 ];
 
+/** Identical scrolling light beam used in About cards */
+function CardCanvas({ color }: { color: string }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let W = 0, H = 0, x = -200, raf = 0;
+    const resize = () => {
+      W = canvas.offsetWidth; H = canvas.offsetHeight;
+      canvas.width = W; canvas.height = H;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      const grad = ctx.createLinearGradient(x - 80, 0, x + 80, H);
+      grad.addColorStop(0, 'rgba(255,255,255,0)');
+      grad.addColorStop(0.4, `${color}22`);
+      grad.addColorStop(0.5, `${color}44`);
+      grad.addColorStop(0.6, `${color}22`);
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+      x += 1.2;
+      if (x > W + 200) x = -200;
+      raf = requestAnimationFrame(draw);
+    };
+    raf = requestAnimationFrame(draw);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
+  }, [color]);
+  return (
+    <canvas
+      ref={ref}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 1 }}
+    />
+  );
+}
+
 export default function WhatWeDo() {
   return (
-    <section className="relative py-32 md:py-40" style={{ background: '#07080f' }}>
-      {/* Subtle background grid */}
-      <div className="absolute inset-0 bg-grid opacity-20" />
+    <section
+      id="services"
+      className="relative py-32 md:py-40 overflow-hidden"
+      style={{
+        background: 'linear-gradient(160deg, #141d3a 0%, #172040 35%, #131b35 65%, #161e3a 100%)',
+      }}
+    >
+      {/* Warm ambient radial — lifts the overall brightness */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 90% 60% at 50% 40%, rgba(91,138,255,0.13) 0%, rgba(35,75,210,0.06) 50%, transparent 70%)',
+      }} />
+      {/* Subtle dot-grid texture */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: 'radial-gradient(rgba(160,185,255,0.07) 1px, transparent 1px)',
+        backgroundSize: '28px 28px',
+      }} />
 
       <div className="relative max-w-7xl mx-auto px-6">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,20 +96,26 @@ export default function WhatWeDo() {
         >
           <div>
             <p className="text-[12px] uppercase tracking-[0.3em] font-medium mb-5"
-              style={{ color: 'rgba(164,171,196,0.5)' }}>What We Do</p>
-            <h2 className="font-medium leading-[1.1] tracking-[-0.025em] text-white"
-              style={{ fontSize: 'clamp(36px,5vw,64px)' }}>
+              style={{ color: 'rgba(150,175,255,0.6)' }}>What We Do</p>
+            <h2 className="font-medium leading-[1.1] tracking-[-0.025em]"
+              style={{
+                fontSize: 'clamp(36px,5vw,64px)',
+                background: 'linear-gradient(180deg,#ffffff 0%,#a4abc4 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
               Here&apos;s what we do best.
             </h2>
           </div>
           <p className="text-lg leading-relaxed md:text-right md:max-w-md md:ml-auto"
-            style={{ color: 'rgba(164,171,196,0.7)' }}>
+            style={{ color: 'rgba(180,200,235,0.7)' }}>
             Web development and CRM operations in perfect sync — engineered for businesses that intend to last.
           </p>
         </motion.div>
 
-        {/* 3-column cards on lg, stacked on mobile */}
-        <div className="grid md:grid-cols-3 gap-5">
+        {/* Cards — identical design to About cards */}
+        <div className="grid md:grid-cols-3 gap-5 mb-16">
           {items.map((it, i) => (
             <motion.a
               key={it.title}
@@ -60,74 +123,78 @@ export default function WhatWeDo() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative rounded-2xl overflow-hidden p-8 md:p-10 flex flex-col"
-              style={{ minHeight: 320, textDecoration: 'none' }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative rounded-2xl overflow-hidden group"
+              style={{ minHeight: 280, textDecoration: 'none', display: 'block' }}
             >
-              {/* ── STEEL / BRUSHED METAL background ── */}
-              {/* Base dark steel */}
+              {/* ── Identical lighter steel base as About cards ── */}
               <div className="absolute inset-0" style={{
-                background: 'linear-gradient(160deg, #1c2030 0%, #141822 40%, #0e1219 70%, #181e2c 100%)',
+                background: 'linear-gradient(145deg, #232b45 0%, #1a2238 35%, #1e2a42 65%, #242f4a 100%)',
               }} />
-              {/* Brushed horizontal lines */}
+              {/* Fine horizontal brushed lines */}
               <div className="absolute inset-0" style={{
-                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.012) 3px, rgba(255,255,255,0.012) 4px)',
+                backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.018) 2px,rgba(255,255,255,0.018) 3px)',
               }} />
-              {/* Top-edge shine */}
-              <div className="absolute top-0 left-0 right-0 h-px" style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(200,220,255,0.35) 40%, rgba(255,255,255,0.5) 60%, rgba(200,220,255,0.35) 80%, transparent 100%)',
+              {/* Top shine — accent coloured */}
+              <div className="absolute top-0 left-0 right-0" style={{
+                height: 1,
+                background: `linear-gradient(90deg,transparent,${it.accent}88 40%,rgba(255,255,255,0.6) 55%,${it.accent}88 70%,transparent)`,
               }} />
-              {/* Left-edge steel glare */}
-              <div className="absolute top-0 left-0 bottom-0 w-px" style={{
-                background: 'linear-gradient(180deg, transparent 0%, rgba(180,200,255,0.25) 30%, rgba(255,255,255,0.15) 60%, transparent 100%)',
+              {/* Left glare */}
+              <div className="absolute top-0 left-0 bottom-0" style={{
+                width: 1,
+                background: 'linear-gradient(180deg,transparent,rgba(200,220,255,0.2) 30%,rgba(255,255,255,0.12) 60%,transparent)',
               }} />
-              {/* Moving shimmer on hover — implemented as an overlay */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{
-                background: 'linear-gradient(125deg, transparent 20%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.04) 60%, transparent 80%)',
+              {/* Border */}
+              <div className="absolute inset-0 rounded-2xl" style={{
+                border: '1px solid rgba(200,220,255,0.12)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)',
               }} />
-              {/* Accent color glow from bottom */}
-              <div className="absolute -bottom-8 -right-8 w-40 h-40 rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{
-                background: `radial-gradient(circle, ${it.accent}, transparent 70%)`,
-                filter: 'blur(20px)',
-              }} />
-              {/* Steel border */}
-              <div className="absolute inset-0 rounded-2xl pointer-events-none" style={{
-                border: '1px solid rgba(180,200,255,0.1)',
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.3)',
+              {/* Scrolling light beam */}
+              <CardCanvas color={it.accent} />
+              {/* Hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{
+                background: `radial-gradient(ellipse 70% 60% at 50% 100%, ${it.accent}20, transparent 70%)`,
               }} />
 
               {/* Content */}
-              <div className="relative flex items-start justify-between mb-10">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center" style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.1)',
-                }}>
-                  <it.icon className="w-6 h-6" style={{ color: 'rgba(200,215,255,0.85)' }} strokeWidth={1.5} />
+              <div className="relative p-8" style={{ zIndex: 2 }}>
+                <div className="flex items-start justify-between mb-10">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{
+                    background: `linear-gradient(135deg,${it.accent}28,${it.accent}08)`,
+                    border: `1px solid ${it.accent}33`,
+                    boxShadow: `0 0 16px ${it.accent}18`,
+                  }}>
+                    <it.icon className="w-5 h-5" style={{ color: it.accent }} strokeWidth={1.5} />
+                  </div>
+                  <ArrowUpRight
+                    className="w-4 h-4 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    style={{ color: 'rgba(164,171,196,0.35)' }}
+                  />
                 </div>
-                <ArrowUpRight className="w-5 h-5 transition-all group-hover:-translate-y-1 group-hover:translate-x-1"
-                  style={{ color: 'rgba(164,171,196,0.4)' }} />
-              </div>
-              <h3 className="relative text-2xl md:text-3xl font-medium tracking-tight text-white mb-3">{it.title}</h3>
-              <p className="relative leading-relaxed flex-1" style={{ fontSize: 15, color: 'rgba(164,171,196,0.72)' }}>{it.desc}</p>
+                <h3 className="font-display text-[15px] uppercase tracking-wider mb-3 text-white">{it.title}</h3>
+                <p className="text-[14px] leading-relaxed" style={{ color: 'rgba(180,200,230,0.78)' }}>{it.desc}</p>
 
-              {/* Bottom accent line */}
-              <div className="relative mt-8 h-px" style={{
-                background: `linear-gradient(90deg, ${it.accent}, transparent)`,
-                opacity: 0.4,
-              }} />
+                {/* Bottom accent line — same as About cards */}
+                <div className="mt-8" style={{
+                  height: 1,
+                  background: `linear-gradient(90deg,${it.accent},transparent)`,
+                  opacity: 0.4,
+                }} />
+              </div>
             </motion.a>
           ))}
         </div>
 
+        {/* Footer CTA row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 flex flex-col md:flex-row items-center justify-center gap-5"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row items-center justify-center gap-5"
         >
-          <p className="text-lg" style={{ color: 'rgba(164,171,196,0.7)' }}>
+          <p className="text-lg" style={{ color: 'rgba(180,200,235,0.7)' }}>
             Have a bold idea? Let&apos;s make it real.
           </p>
           <a href="#contact"
