@@ -101,15 +101,14 @@ export default function Navbar() {
 
             {/* ── DESKTOP MENU ── */}
             <ul className="hidden lg:flex items-center gap-0 mx-auto" style={{ listStyle: 'none' }}>
-              {[['Home','#home'],['About','#about'],['Contact','#contact']].map(([l,h]) => (
-                <li key={l}>
-                  <a href={h} style={{ padding: '8px 18px', fontSize: 15, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
-                    onMouseEnter={e => (e.currentTarget.style.color='#fff')}
-                    onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
-                  >{l}</a>
-                </li>
-              ))}
-              {/* Services dropdown */}
+              {/* Home */}
+              <li>
+                <a href="#home" style={{ padding: '8px 18px', fontSize: 15, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
+                  onMouseEnter={e => (e.currentTarget.style.color='#fff')}
+                  onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+                >Home</a>
+              </li>
+              {/* Services dropdown — second */}
               <li className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
                 <button
                   style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'8px 18px', fontSize:15, fontWeight:500, color:'rgba(225,235,255,0.9)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif' }}
@@ -155,6 +154,15 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </li>
+              {/* About + Contact after Services */}
+              {[['About','#about'],['Contact','#contact']].map(([l,h]) => (
+                <li key={l}>
+                  <a href={h} style={{ padding: '8px 18px', fontSize: 15, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
+                    onMouseEnter={e => (e.currentTarget.style.color='#fff')}
+                    onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+                  >{l}</a>
+                </li>
+              ))}
             </ul>
 
             {/* ── GET STARTED ── */}
@@ -185,11 +193,9 @@ export default function Navbar() {
               boxShadow:'0 8px 32px rgba(0,0,0,0.5)',
             }}
           >
-            {[['Home','#home'],['About','#about'],['Contact','#contact']].map(([l,h]) => (
-              <a key={l} href={h} onClick={() => setMobile(false)}
+            <a href="#home" onClick={() => setMobile(false)}
                 style={{ display:'block', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
-              >{l}</a>
-            ))}
+              >Home</a>
             <button onClick={() => setMobileServices(!mobileServices)}
               style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif', borderRadius:10 }}
             >
@@ -204,6 +210,11 @@ export default function Navbar() {
                 ))}
               </div>
             )}
+            {[['About','#about'],['Contact','#contact']].map(([l,h]) => (
+              <a key={l} href={h} onClick={() => setMobile(false)}
+                style={{ display:'block', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
+              >{l}</a>
+            ))}
             <a href="#contact" onClick={() => setMobile(false)}
               style={{ display:'block', marginTop:10, padding:'13px 20px', background:'#fff', color:'#07112e', borderRadius:12, textAlign:'center', fontWeight:600, fontSize:15, textDecoration:'none' }}
             >Get Started</a>
