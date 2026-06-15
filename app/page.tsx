@@ -1,10 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import TrustBar from '@/components/TrustBar';
 import WhatWeDo from '@/components/WhatWeDo';
 import MarqueeTagline from '@/components/MarqueeTagline';
-import WhyChooseUs from '@/components/WhyChooseUs';
 import Testimonials from '@/components/Testimonials';
 import CRM from '@/components/CRM';
 import FAQ from '@/components/FAQ';
@@ -18,10 +16,8 @@ export default function Home() {
       <main className="relative">
         <Hero />
         <About />
-        <TrustBar />
         <WhatWeDo />
         <MarqueeTagline />
-        <WhyChooseUs />
         <Testimonials />
         <CRM />
         <FAQ />

@@ -52,21 +52,56 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="relative rounded-3xl overflow-hidden"
+          style={{ minHeight: 280 }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-600 via-brand-500 to-violet-600" />
-          <div className="absolute inset-0 bg-grid opacity-30 mix-blend-overlay" />
+          {/* Nav-matching diagonal gradient */}
+          <div className="absolute inset-0" style={{
+            background: 'linear-gradient(135deg, rgba(10,20,68,0.98) 0%, rgba(22,52,160,0.96) 30%, rgba(35,75,210,0.95) 55%, rgba(18,36,100,0.97) 78%, rgba(8,14,52,0.98) 100%)',
+          }} />
+
+          {/* Cell phone silhouette — opacity SVG background */}
+          <div className="absolute inset-0 flex items-center justify-end pr-12 pointer-events-none select-none">
+            <svg viewBox="0 0 200 360" xmlns="http://www.w3.org/2000/svg"
+              style={{ width: 220, height: 'auto', opacity: 0.07 }}>
+              <rect x="10" y="8" width="180" height="344" rx="28" ry="28"
+                fill="none" stroke="white" strokeWidth="12"/>
+              <rect x="30" y="8" width="140" height="8" rx="4"
+                fill="white"/>
+              <rect x="80" y="14" width="40" height="6" rx="3"
+                fill="white"/>
+              <circle cx="100" cy="330" r="14"
+                fill="none" stroke="white" strokeWidth="8"/>
+              <rect x="22" y="30" width="156" height="280" rx="4"
+                fill="white"/>
+            </svg>
+          </div>
+
+          {/* Laser border conic glow on the banner */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            background: 'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(91,138,255,0.2), transparent 65%)',
+          }} />
+
+          {/* Grid overlay */}
+          <div className="absolute inset-0 bg-grid opacity-20 mix-blend-overlay" />
+
+          {/* Content */}
           <div className="relative p-12 md:p-16 grid md:grid-cols-[1.5fr_1fr] gap-10 items-center">
             <div>
-              <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight mb-3">
+              <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight mb-4">
                 Ready to work with a team that actually cares?
               </h3>
-              <p className="text-lg text-blue-100 max-w-md">
-                Let's talk about what we can build together. We respond to every inquiry within 24 hours.
+              <p className="text-lg max-w-md leading-relaxed" style={{ color: 'rgba(180,210,255,0.8)' }}>
+                Let&apos;s talk about what we can build together. We respond to every inquiry within 24 hours.
               </p>
             </div>
-            <a href="#contact" className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-ink-950 rounded-xl font-display text-[11px] uppercase tracking-wider hover:bg-ink-100 transition shadow-2xl shadow-black/20 w-fit">
-              Start the conversation →
-            </a>
+            <div className="flex justify-start md:justify-end">
+              <a href="#contact"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white rounded-xl font-semibold text-[14px] hover:bg-ink-100 transition shadow-2xl"
+                style={{ color: '#07112e', boxShadow: '0 8px 40px rgba(0,0,0,0.4)' }}
+              >
+                Start the conversation →
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
