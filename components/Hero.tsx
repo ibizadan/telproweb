@@ -116,7 +116,7 @@ export default function Hero() {
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <div className="text-[10px] uppercase tracking-[0.3em] text-ink-300">Scroll</div>
         <motion.div
@@ -125,6 +125,23 @@ export default function Hero() {
           className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"
         />
       </motion.div>
+
+      {/* ── Bottom shape divider — curves into the next section ── */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 leading-none overflow-hidden">
+        <svg
+          viewBox="0 0 1440 90"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="w-full block"
+          style={{ height: 90 }}
+        >
+          {/* fill = About section background color */}
+          <path
+            d="M0,90 L0,45 Q200,0 400,30 Q600,60 720,25 Q840,0 1040,35 Q1240,65 1440,20 L1440,90 Z"
+            fill="#05070f"
+          />
+        </svg>
+      </div>
     </section>
   );
 }

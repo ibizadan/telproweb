@@ -161,10 +161,10 @@ export default function Footer() {
                 onMouseLeave={e => (e.currentTarget.style.color = 'rgba(180,200,240,0.6)')}>
                 (858) 480-9719
               </a>
-              <a href="mailto:hola@telpromarketing.com" style={{ color: 'rgba(180,200,240,0.6)', textDecoration: 'none' }}
+              <a href="mailto:info@telpromarketing.com" style={{ color: 'rgba(180,200,240,0.6)', textDecoration: 'none' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'rgba(180,200,240,0.6)')}>
-                hola@telpromarketing.com
+                info@telpromarketing.com
               </a>
             </div>
           </div>
