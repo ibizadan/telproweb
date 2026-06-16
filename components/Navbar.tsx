@@ -65,7 +65,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-5">
           {/* ── Nav pill — footer-matching background ── */}
           <div
-            className="relative flex items-center gap-6 rounded-2xl px-6 py-3 overflow-hidden"
+            className="relative flex items-center gap-6 rounded-2xl px-6 py-3"
             style={{
               background: `linear-gradient(
                 135deg,
@@ -81,34 +81,31 @@ export default function Navbar() {
               boxShadow: '0 4px 24px rgba(0,0,0,0.4), 0 0 60px rgba(40,80,255,0.12)',
             }}
           >
-            {/* Floating sparkle particles canvas */}
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }} />
-
-            {/* Top-edge shine line */}
-            <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{
-              height: 1, zIndex: 2,
-              background: 'linear-gradient(90deg, transparent 0%, rgba(150,190,255,0.7) 25%, rgba(220,240,255,0.95) 50%, rgba(150,190,255,0.7) 75%, transparent 100%)',
-            }} />
-
-            {/* Radial glow accent */}
-            <div className="absolute pointer-events-none" style={{
-              top: '-40%', left: '10%', width: '80%', height: '200%',
-              background: 'radial-gradient(ellipse at center, rgba(91,138,255,0.14) 0%, transparent 65%)',
-              zIndex: 1,
-            }} />
-
-            {/* Grid texture */}
-            <div className="absolute inset-0 pointer-events-none" style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
-              backgroundSize: '40px 40px',
-              zIndex: 1,
-            }} />
+            {/* Effects clipped inside their own div so dropdown can escape */}
+            <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+              {/* Floating sparkle particles canvas */}
+              <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+              {/* Top-edge shine line */}
+              <div className="absolute top-0 left-0 right-0" style={{
+                height: 1,
+                background: 'linear-gradient(90deg, transparent 0%, rgba(150,190,255,0.7) 25%, rgba(220,240,255,0.95) 50%, rgba(150,190,255,0.7) 75%, transparent 100%)',
+              }} />
+              {/* Radial glow accent */}
+              <div className="absolute" style={{
+                top: '-40%', left: '10%', width: '80%', height: '200%',
+                background: 'radial-gradient(ellipse at center, rgba(91,138,255,0.14) 0%, transparent 65%)',
+              }} />
+              {/* Grid texture */}
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+                backgroundSize: '40px 40px',
+              }} />
+            </div>
             {/* ── LOGO ── */}
             <Link href="#home"
               className="mr-auto"
-              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 2 }}
+              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none', display: 'inline-block', position: 'relative', zIndex: 2 }}
             >
-              {/* TELPRO with swish */}
               <span style={{ position: 'relative', display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
                 <span style={{
                   position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
@@ -118,20 +115,6 @@ export default function Navbar() {
                 }} />
                 <span className="font-black" style={{ fontSize: 35, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1, position: 'relative', zIndex: 1 }}>TELPRO</span>
               </span>
-              {/* MARKETING — same width as TELPRO, centered */}
-              <span style={{
-                display: 'block',
-                fontFamily: 'Manrope, sans-serif',
-                fontSize: 8.5,
-                fontWeight: 600,
-                color: 'rgba(255,255,255,0.45)',
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                marginTop: 3,
-                lineHeight: 1,
-                textAlign: 'center',
-                width: '100%',
-              }}>Marketing</span>
               <style>{`
                 @keyframes swish {
                   0%   { transform: translateX(-160%); }
