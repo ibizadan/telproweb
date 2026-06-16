@@ -233,9 +233,62 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mb-20"
+          className="max-w-3xl mb-20 relative"
         >
           <p className="text-[11px] uppercase tracking-[0.3em] text-brand-400 font-medium mb-4">◯ About us</p>
+
+          {/* Cartoon rocket — floats to the left of the heading */}
+          <div
+            className="absolute pointer-events-none select-none"
+            style={{ left: '-120px', top: '10px', width: 90, height: 90 }}
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0], rotate: [0, 2, -2, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              style={{ width: '100%', height: '100%' }}
+            >
+              <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', transform: 'rotate(-35deg)' }}>
+                {/* Exhaust flames */}
+                <motion.ellipse cx="50" cy="105" rx="8" ry="14"
+                  fill="#ff7a2d" opacity="0.9"/>
+                <ellipse cx="50" cy="112" rx="5" ry="10" fill="#ffb347" opacity="0.85"/>
+                <ellipse cx="50" cy="117" rx="3" ry="7" fill="#fff176" opacity="0.9"/>
+                {/* Side fins */}
+                <path d="M28 72 L18 92 L38 80 Z" fill="#3d6bf0"/>
+                <path d="M72 72 L82 92 L62 80 Z" fill="#3d6bf0"/>
+                {/* Body */}
+                <rect x="35" y="30" width="30" height="52" rx="4" fill="#e8eaf0"/>
+                {/* Body stripe */}
+                <rect x="35" y="52" width="30" height="8" fill="#5b8aff" opacity="0.5"/>
+                {/* Nose cone */}
+                <path d="M35 30 Q50 2 65 30 Z" fill="#5b8aff"/>
+                {/* Window */}
+                <circle cx="50" cy="44" r="10" fill="#0d1a40" stroke="#7eb8ff" strokeWidth="2.5"/>
+                <circle cx="46" cy="40" r="3.5" fill="#fff" opacity="0.35"/>
+                {/* Body rivets */}
+                <circle cx="38" cy="64" r="2" fill="#a4abc4" opacity="0.6"/>
+                <circle cx="62" cy="64" r="2" fill="#a4abc4" opacity="0.6"/>
+                {/* Stars around rocket */}
+                <circle cx="15" cy="30" r="1.5" fill="#fff" opacity="0.7"/>
+                <circle cx="88" cy="50" r="1.2" fill="#fff" opacity="0.6"/>
+                <circle cx="10" cy="65" r="1" fill="#fff" opacity="0.5"/>
+                <circle cx="90" cy="25" r="1.8" fill="#7eb8ff" opacity="0.8"/>
+                <circle cx="20" cy="85" r="1" fill="#5b8aff" opacity="0.6"/>
+                {/* Smoke trail dots */}
+                <circle cx="50" cy="128" r="4" fill="rgba(164,171,196,0.25)"/>
+                <circle cx="46" cy="138" r="3" fill="rgba(164,171,196,0.18)"/>
+                <circle cx="52" cy="146" r="2" fill="rgba(164,171,196,0.12)"/>
+              </svg>
+            </motion.div>
+            {/* Glow under rocket */}
+            <div style={{
+              position: 'absolute', bottom: -8, left: '50%', transform: 'translateX(-50%)',
+              width: 40, height: 20,
+              background: 'radial-gradient(ellipse, rgba(255,122,45,0.4), transparent 70%)',
+              filter: 'blur(6px)',
+            }} />
+          </div>
+
           <h2 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.02] mb-8">
             <span className="text-gradient">A quarter century of</span><br/>
             <span className="font-serif-italic text-brand-400">building the web.</span>

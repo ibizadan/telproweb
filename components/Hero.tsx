@@ -78,10 +78,10 @@ export default function Hero() {
           Web Development & Managed CRM
         </motion.h2>
 
-        {/* Big headline — exact same style as "A quarter century..." */}
+        {/* Big headline — slightly smaller clamp */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
-          className="text-[clamp(44px,7vw,88px)] font-bold tracking-tight leading-[1.02] mb-8 max-w-5xl mx-auto"
+          className="text-[clamp(28px,4.5vw,60px)] font-bold tracking-tight leading-[1.08] mb-8 max-w-4xl mx-auto"
         >
           <span className="text-gradient block">Websites built to grow your business.</span>
           <span className="font-serif-italic text-brand-400">Built for the modern web.</span>
@@ -119,21 +119,6 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* ── Bottom shape divider — 135px, clean flat light grey ── */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 leading-none overflow-hidden">
-        <svg
-          viewBox="0 0 1440 135"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="w-full block"
-          style={{ height: 135 }}
-        >
-          <path
-            d="M0,135 L0,68 Q180,10 360,45 Q540,80 720,38 Q900,0 1080,42 Q1260,80 1440,30 L1440,135 Z"
-            fill="#e8eaf0"
-          />
-        </svg>
-      </div>
     </section>
   );
 }
