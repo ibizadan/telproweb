@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
@@ -14,20 +14,44 @@ export default function Navbar() {
   const [drop, setDrop] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  /* Laser animation offset — cycles 0→100 every 3s */
-  const [laser, setLaser] = useState(0);
+  /* Floating particle sparkles — identical to footer */
   useEffect(() => {
-    let raf = 0;
-    let start = performance.now();
-    const tick = (now: number) => {
-      const elapsed = now - start;
-      const period = 3000; // 3 seconds per lap
-      setLaser((elapsed % period) / period);
-      raf = requestAnimationFrame(tick);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let W = canvas.offsetWidth;
+    let H = canvas.offsetHeight;
+    canvas.width = W; canvas.height = H;
+    const resize = () => {
+      W = canvas.offsetWidth; H = canvas.offsetHeight;
+      canvas.width = W; canvas.height = H;
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    window.addEventListener('resize', resize);
+    type P = { x:number; y:number; r:number; a:number; da:number; dx:number; dy:number; hue:number };
+    const pts: P[] = Array.from({ length: 55 }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: Math.random() * 1.4 + 0.3,
+      a: Math.random(), da: (Math.random() - 0.5) * 0.006,
+      dx: (Math.random() - 0.5) * 0.28, dy: -Math.random() * 0.22 - 0.05,
+      hue: 200 + Math.random() * 40,
+    }));
+    let raf = 0;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      for (const p of pts) {
+        p.x += p.dx; p.y += p.dy; p.a += p.da;
+        if (p.a <= 0 || p.a >= 1) p.da *= -1;
+        if (p.y < -4) { p.y = H + 2; p.x = Math.random() * W; }
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${p.hue},80%,85%,${p.a * 0.7})`; ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    };
+    raf = requestAnimationFrame(draw);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
   }, []);
 
   return (
@@ -39,80 +63,86 @@ export default function Navbar() {
       style={{ padding: '12px 0' }}
     >
       <div className="mx-auto max-w-7xl px-5">
-        {/* Laser border container */}
-        <div className="relative rounded-2xl" style={{ padding: '1.5px' }}>
-
-          {/* ── Laser conic glow that orbits the border ── */}
+          {/* ── Nav pill — footer-matching background ── */}
           <div
-            aria-hidden="true"
-            className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden"
-            style={{ zIndex: 0 }}
-          >
-            <div
-              className="absolute"
-              style={{
-                inset: '-2px',
-                borderRadius: 'inherit',
-                background: `conic-gradient(
-                  from ${laser * 360}deg at 50% 50%,
-                  transparent 0deg,
-                  rgba(120,170,255,0.9) 30deg,
-                  rgba(180,220,255,1) 45deg,
-                  rgba(120,170,255,0.9) 60deg,
-                  transparent 90deg,
-                  transparent 360deg
-                )`,
-                filter: 'blur(1.5px)',
-              }}
-            />
-          </div>
-
-          {/* ── Nav pill ── */}
-          <div
-            className="relative flex items-center gap-6 rounded-2xl px-6 py-3"
+            className="relative flex items-center gap-6 rounded-2xl px-6 py-3 overflow-hidden"
             style={{
-              zIndex: 1,
-              /* Diagonal gradient: bright electric-blue top-left → dark navy bottom-right */
               background: `linear-gradient(
                 135deg,
-                rgba(10,20,68,0.98)  0%,
-                rgba(22,52,160,0.96) 30%,
-                rgba(35,75,210,0.95) 55%,
+                rgba(10,20,68,0.99)   0%,
+                rgba(22,52,160,0.97) 30%,
+                rgba(35,75,210,0.96) 55%,
                 rgba(18,36,100,0.97) 78%,
-                rgba(8,14,52,0.98)   100%
+                rgba(8,14,52,0.99)  100%
               )`,
               backdropFilter: 'blur(24px) saturate(200%)',
               WebkitBackdropFilter: 'blur(24px) saturate(200%)',
+              border: '1px solid rgba(91,138,255,0.18)',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.4), 0 0 60px rgba(40,80,255,0.12)',
             }}
           >
+            {/* Floating sparkle particles canvas */}
+            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }} />
+
+            {/* Top-edge shine line */}
+            <div className="absolute top-0 left-0 right-0 pointer-events-none" style={{
+              height: 1, zIndex: 2,
+              background: 'linear-gradient(90deg, transparent 0%, rgba(150,190,255,0.7) 25%, rgba(220,240,255,0.95) 50%, rgba(150,190,255,0.7) 75%, transparent 100%)',
+            }} />
+
+            {/* Radial glow accent */}
+            <div className="absolute pointer-events-none" style={{
+              top: '-40%', left: '10%', width: '80%', height: '200%',
+              background: 'radial-gradient(ellipse at center, rgba(91,138,255,0.14) 0%, transparent 65%)',
+              zIndex: 1,
+            }} />
+
+            {/* Grid texture */}
+            <div className="absolute inset-0 pointer-events-none" style={{
+              backgroundImage: 'linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+              zIndex: 1,
+            }} />
             {/* ── LOGO ── */}
             <Link href="#home"
               className="mr-auto"
-              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'stretch' }}
+              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 2 }}
             >
-              {/* TELPRO row — inline-block so wrapper = text width only */}
-              <span style={{ display: 'inline-flex', alignItems: 'baseline', lineHeight: 1 }}>
-                <span className="font-black text-white" style={{ fontSize: 35, letterSpacing: '-0.02em' }}>TEL</span>
-                <span className="font-black" style={{ fontSize: 35, color: '#93c5fd', letterSpacing: '-0.02em' }}>PRO</span>
+              {/* TELPRO with swish */}
+              <span style={{ position: 'relative', display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
+                <span style={{
+                  position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                  background: 'linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.15) 38%, rgba(255,255,255,0.6) 47%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.6) 53%, rgba(255,255,255,0.15) 62%, transparent 75%)',
+                  animation: 'swish 3s ease-in-out infinite',
+                  pointerEvents: 'none', zIndex: 2,
+                }} />
+                <span className="font-black" style={{ fontSize: 35, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1, position: 'relative', zIndex: 1 }}>TELPRO</span>
               </span>
-              {/* Marketing spans full width of the inline-flex (= TELPRO width) */}
+              {/* MARKETING — same width as TELPRO, centered */}
               <span style={{
                 display: 'block',
                 fontFamily: 'Manrope, sans-serif',
-                fontSize: 9,
-                fontWeight: 500,
-                color: 'rgba(255,255,255,0.38)',
-                letterSpacing: '0.05em',
+                fontSize: 8.5,
+                fontWeight: 600,
+                color: 'rgba(255,255,255,0.45)',
+                letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 marginTop: 3,
-                textAlign: 'justify',
-                textAlignLast: 'justify',
                 lineHeight: 1,
-              }}>MARKETING</span>
+                textAlign: 'center',
+                width: '100%',
+              }}>Marketing</span>
+              <style>{`
+                @keyframes swish {
+                  0%   { transform: translateX(-160%); }
+                  38%  { transform: translateX(160%); }
+                  100% { transform: translateX(160%); }
+                }
+              `}</style>
             </Link>
 
             {/* ── DESKTOP MENU ── */}
-            <ul className="hidden lg:flex items-center gap-0 mx-auto" style={{ listStyle: 'none' }}>
+            <ul className="hidden lg:flex items-center gap-0 mx-auto" style={{ listStyle: 'none', position: 'relative', zIndex: 2 }}>
               {/* Home */}
               <li style={{ position: 'relative' }}>
                 <a href="#home"
@@ -224,7 +254,7 @@ export default function Navbar() {
             {/* ── GET STARTED ── */}
             <a href="#contact"
               className="hidden lg:inline-flex items-center gap-1.5 rounded-full font-semibold transition-transform hover:scale-[1.03]"
-              style={{ padding:'10px 22px', background:'#fff', color:'#07112e', fontSize:14, textDecoration:'none' }}
+              style={{ padding:'10px 22px', background:'#fff', color:'#07112e', fontSize:14, textDecoration:'none', position: 'relative', zIndex: 2 }}
             >
               Get Started <ArrowUpRight style={{ width:14, height:14 }} />
             </a>
@@ -234,7 +264,6 @@ export default function Navbar() {
               {mobile ? <X style={{ width:20, height:20 }} /> : <Menu style={{ width:20, height:20 }} />}
             </button>
           </div>
-        </div>
       </div>
 
       {/* Mobile menu */}

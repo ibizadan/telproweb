@@ -140,24 +140,29 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <div className="mb-6">
-              <span style={{ fontFamily: 'Archivo, sans-serif', display: 'inline-flex', flexDirection: 'column', alignItems: 'stretch' }}>
-                <span style={{ display: 'inline-flex', alignItems: 'baseline', lineHeight: 1 }}>
-                  <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em' }}>TEL</span>
-                  <span className="font-black" style={{ fontSize: 28, color: '#93c5fd', letterSpacing: '-0.02em' }}>PRO</span>
+              <span style={{ fontFamily: 'Archivo, sans-serif', display: 'inline-flex', flexDirection: 'column', alignItems: 'center' }}>
+                <span style={{ position: 'relative', display: 'inline-block', overflow: 'hidden', borderRadius: 4 }}>
+                  <span style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+                    background: 'linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.15) 38%, rgba(255,255,255,0.6) 47%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.6) 53%, rgba(255,255,255,0.15) 62%, transparent 75%)',
+                    animation: 'swish 3s ease-in-out infinite',
+                    pointerEvents: 'none', zIndex: 2,
+                  }} />
+                  <span className="font-black" style={{ fontSize: 28, color: '#ffffff', letterSpacing: '-0.02em', lineHeight: 1, position: 'relative', zIndex: 1 }}>TELPRO</span>
                 </span>
                 <span style={{
                   display: 'block',
                   fontFamily: 'Manrope, sans-serif',
-                  fontSize: 8,
-                  fontWeight: 500,
-                  color: 'rgba(255,255,255,0.38)',
-                  letterSpacing: '0.05em',
+                  fontSize: 7.5,
+                  fontWeight: 600,
+                  color: 'rgba(255,255,255,0.45)',
+                  letterSpacing: '0.22em',
                   textTransform: 'uppercase',
                   marginTop: 3,
-                  textAlign: 'justify',
-                  textAlignLast: 'justify',
                   lineHeight: 1,
-                }}>MARKETING</span>
+                  textAlign: 'center',
+                  width: '100%',
+                }}>Marketing</span>
               </span>
             </div>
             <p style={{ fontSize: 14, color: 'rgba(180,200,240,0.7)', lineHeight: 1.7, marginBottom: 20, maxWidth: 300 }}>
