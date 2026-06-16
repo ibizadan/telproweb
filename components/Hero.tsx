@@ -39,9 +39,9 @@ export default function Hero() {
       {/* Content — left-aligned, occupies left ~50% */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 w-full max-w-6xl mx-auto px-6"
+        className="relative z-10 w-full max-w-6xl mx-auto px-4 md:px-8"
       >
-        <div className="max-w-xl">
+        <div className="max-w-lg ml-0">
           {/* Eyebrow badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
@@ -69,7 +69,7 @@ export default function Hero() {
             className="text-[clamp(26px,3.8vw,52px)] font-bold tracking-tight leading-[1.1] mb-8"
           >
             <span className="text-gradient block">Websites Built for Success.</span>
-            <span className="font-serif-italic text-brand-400">Built for the modern web.</span>
+            <span className="font-serif-italic" style={{ color: '#ff7a2d' }}>Built for the modern web.</span>
           </motion.h1>
 
           {/* CTA */}
