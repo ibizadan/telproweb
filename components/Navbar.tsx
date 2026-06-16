@@ -87,16 +87,30 @@ export default function Navbar() {
           >
             {/* ── LOGO ── */}
             <Link href="#home"
-              className="flex flex-col items-center leading-none mr-auto"
+              className="flex flex-col items-start leading-none mr-auto"
               style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none' }}
             >
-              <div className="flex items-baseline">
+              <div className="flex items-baseline" id="telpro-measure">
                 <span className="font-black text-white" style={{ fontSize: 35, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                <span className="font-black" style={{ fontSize: 35, color: '#a4abc4', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+                <span className="font-black" style={{ fontSize: 35, color: '#93c5fd', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
               </div>
-              <span style={{ fontSize: 11, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 2, marginLeft: '0.48em' }}>
-                Marketing
-              </span>
+              {/* SVG text stretches Marketing to exact width of TELPRO */}
+              <svg height="14" style={{ display: 'block', width: '100%', marginTop: 3, overflow: 'visible' }}>
+                <text
+                  y="11"
+                  x="0"
+                  textLength="100%"
+                  lengthAdjust="spacing"
+                  style={{
+                    fontFamily: 'Manrope, sans-serif',
+                    fontSize: 10,
+                    fontWeight: 500,
+                    fill: 'rgba(255,255,255,0.38)',
+                    textTransform: 'uppercase',
+                    letterSpacing: 0,
+                  }}
+                >MARKETING</text>
+              </svg>
             </Link>
 
             {/* ── DESKTOP MENU ── */}

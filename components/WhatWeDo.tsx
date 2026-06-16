@@ -92,7 +92,7 @@ export default function WhatWeDo() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7 }}
-          className="grid md:grid-cols-2 gap-8 items-end mb-16"
+          className="mb-16"
         >
           <div>
             <p className="text-[12px] uppercase tracking-[0.3em] font-medium mb-5"
@@ -108,10 +108,6 @@ export default function WhatWeDo() {
               Here&apos;s what we do best.
             </h2>
           </div>
-          <p className="text-lg leading-relaxed md:text-right md:max-w-md md:ml-auto"
-            style={{ color: 'rgba(180,200,235,0.7)' }}>
-            Web development and CRM operations in perfect sync — engineered for businesses that intend to last.
-          </p>
         </motion.div>
 
         {/* Cards — identical design to About cards */}

@@ -143,11 +143,23 @@ export default function Footer() {
               <div className="flex flex-col items-start leading-none">
                 <div className="flex items-baseline">
                   <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                  <span className="font-black" style={{ fontSize: 28, color: '#a4abc4', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+                  <span className="font-black" style={{ fontSize: 28, color: '#93c5fd', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
                 </div>
-                <span style={{ fontSize: 9, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 3, marginLeft: '0.48em' }}>
-                  Marketing
-                </span>
+                <svg height="13" style={{ display: 'block', width: '100%', marginTop: 3, overflow: 'visible' }}>
+                  <text
+                    y="10"
+                    x="0"
+                    textLength="100%"
+                    lengthAdjust="spacing"
+                    style={{
+                      fontFamily: 'Manrope, sans-serif',
+                      fontSize: 9,
+                      fontWeight: 500,
+                      fill: 'rgba(255,255,255,0.38)',
+                      textTransform: 'uppercase',
+                    }}
+                  >MARKETING</text>
+                </svg>
               </div>
             </div>
             <p style={{ fontSize: 14, color: 'rgba(180,200,240,0.7)', lineHeight: 1.7, marginBottom: 20, maxWidth: 300 }}>

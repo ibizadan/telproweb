@@ -87,16 +87,8 @@ export default function Hero() {
           <span className="font-serif-italic text-brand-400">Built for the modern web.</span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
-          style={{ color: 'rgba(180,195,230,0.8)' }}
-        >
-          We&apos;re Telpromarketing — a web studio that blends WordPress, Next.js, and CRM operations to make your brand impossible to ignore.
-        </motion.p>
-
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.7 }}
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
           className="flex items-center justify-center"
         >
           <a href="#contact" className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[#07112e] rounded-full font-semibold text-[15px] hover:bg-ink-100 transition shadow-2xl shadow-black/40">
