@@ -13,89 +13,75 @@ export default function Hero() {
     <section
       ref={ref}
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
     >
       {/* Video background */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-        >
+        <video autoPlay loop muted playsInline preload="auto"
+          className="w-full h-full object-cover">
           <source src="/hero.mp4" type="video/mp4" />
         </video>
-        {/* Warm orange wash from bottom-left, like the reference */}
-        <div
-          className="absolute inset-0 mix-blend-overlay"
-          style={{
-            background:
-              'radial-gradient(ellipse 70% 80% at 15% 85%, rgba(255, 110, 40, 0.55) 0%, transparent 55%)',
-          }}
-        />
-        {/* Cool teal counter-light from top-right */}
-        <div
-          className="absolute inset-0 mix-blend-soft-light"
-          style={{
-            background:
-              'radial-gradient(ellipse 60% 60% at 85% 15%, rgba(80, 180, 160, 0.4) 0%, transparent 55%)',
-          }}
-        />
-        {/* Dark overlay for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/55 via-ink-950/65 to-ink-950" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/75 via-ink-950/25 to-ink-950/75" />
+
+        {/* LEFT fade — darkens only behind the text, right side stays clear */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to right, rgba(5,7,15,0.82) 0%, rgba(5,7,15,0.55) 42%, rgba(5,7,15,0.1) 65%, transparent 100%)',
+        }} />
+        {/* Subtle top/bottom vignette for polish */}
+        <div className="absolute inset-0" style={{
+          background: 'linear-gradient(to bottom, rgba(5,7,15,0.4) 0%, transparent 25%, transparent 75%, rgba(5,7,15,0.5) 100%)',
+        }} />
+        {/* Very subtle warm tint — reduced opacity so video reads clearly */}
+        <div className="absolute inset-0 mix-blend-overlay" style={{
+          background: 'radial-gradient(ellipse 50% 70% at 0% 90%, rgba(255,110,40,0.3) 0%, transparent 55%)',
+        }} />
       </div>
 
-      {/* Ambient glow accents */}
-      <div className="absolute top-20 -left-32 w-[500px] h-[500px] rounded-full pointer-events-none z-[1]"
-        style={{ background: 'radial-gradient(circle, rgba(91,138,255,0.18), transparent 70%)' }}
-      />
-      <div className="absolute bottom-20 -right-32 w-[600px] h-[600px] rounded-full pointer-events-none z-[1]"
-        style={{ background: 'radial-gradient(circle, rgba(181,138,255,0.12), transparent 70%)' }}
-      />
+      {/* Content — left-aligned, occupies left ~50% */}
+      <motion.div
+        style={{ y, opacity }}
+        className="relative z-10 w-full max-w-6xl mx-auto px-6"
+      >
+        <div className="max-w-xl">
+          {/* Eyebrow badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-hi mb-6"
+          >
+            <div className="relative">
+              <div className="absolute inset-0 bg-emerald-400 rounded-full blur-md" />
+              <div className="relative w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+            </div>
+            <span className="text-[11px] font-semibold text-white tracking-[0.18em] uppercase">Next-Gen Web & CRM Agency</span>
+          </motion.div>
 
-      <motion.div style={{ y, opacity }} className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-hi mb-6"
-        >
-          <div className="relative">
-            <div className="absolute inset-0 bg-emerald-400 rounded-full blur-md" />
-            <div className="relative w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-          </div>
-          <span className="text-[11px] font-semibold text-white tracking-[0.18em] uppercase">Next-Gen Web & CRM Agency</span>
-        </motion.div>
+          {/* Sub heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg font-medium mb-4 tracking-tight"
+            style={{ color: 'rgba(200,215,245,0.75)', fontFamily: 'Manrope, sans-serif' }}
+          >
+            Web Development & Managed CRM
+          </motion.h2>
 
-        {/* Small intro */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl md:text-2xl font-medium mb-5 tracking-tight"
-          style={{ color: 'rgba(200,215,245,0.75)', fontFamily: 'Manrope, sans-serif' }}
-        >
-          Web Development & Managed CRM
-        </motion.h2>
+          {/* Main headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
+            className="text-[clamp(26px,3.8vw,52px)] font-bold tracking-tight leading-[1.1] mb-8"
+          >
+            <span className="text-gradient block">Websites Built for Success.</span>
+            <span className="font-serif-italic text-brand-400">Built for the modern web.</span>
+          </motion.h1>
 
-        {/* Big headline — slightly smaller clamp */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
-          className="text-[clamp(28px,4.5vw,60px)] font-bold tracking-tight leading-[1.08] mb-8 max-w-4xl mx-auto"
-        >
-          <span className="text-gradient block">Websites built to grow your business.</span>
-          <span className="font-serif-italic text-brand-400">Built for the modern web.</span>
-        </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex items-center justify-center"
-        >
-          <a href="#contact" className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[#07112e] rounded-full font-semibold text-[15px] hover:bg-ink-100 transition shadow-2xl shadow-black/40">
-            Start Your Project
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <a href="#contact" className="group inline-flex items-center gap-2 px-7 py-3.5 bg-white text-[#07112e] rounded-full font-semibold text-[14px] hover:bg-ink-100 transition shadow-2xl shadow-black/40">
+              Start Your Project
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}
@@ -110,7 +96,6 @@ export default function Hero() {
           className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent"
         />
       </motion.div>
-
     </section>
   );
 }
