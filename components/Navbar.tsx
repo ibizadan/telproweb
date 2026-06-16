@@ -87,30 +87,28 @@ export default function Navbar() {
           >
             {/* ── LOGO ── */}
             <Link href="#home"
-              className="flex flex-col items-start leading-none mr-auto"
-              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none' }}
+              className="mr-auto"
+              style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none', display: 'inline-flex', flexDirection: 'column', alignItems: 'stretch' }}
             >
-              <div className="flex items-baseline" id="telpro-measure">
-                <span className="font-black text-white" style={{ fontSize: 35, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                <span className="font-black" style={{ fontSize: 35, color: '#93c5fd', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
-              </div>
-              {/* SVG text stretches Marketing to exact width of TELPRO */}
-              <svg height="14" style={{ display: 'block', width: '100%', marginTop: 3, overflow: 'visible' }}>
-                <text
-                  y="11"
-                  x="0"
-                  textLength="100%"
-                  lengthAdjust="spacing"
-                  style={{
-                    fontFamily: 'Manrope, sans-serif',
-                    fontSize: 10,
-                    fontWeight: 500,
-                    fill: 'rgba(255,255,255,0.38)',
-                    textTransform: 'uppercase',
-                    letterSpacing: 0,
-                  }}
-                >MARKETING</text>
-              </svg>
+              {/* TELPRO row — inline-block so wrapper = text width only */}
+              <span style={{ display: 'inline-flex', alignItems: 'baseline', lineHeight: 1 }}>
+                <span className="font-black text-white" style={{ fontSize: 35, letterSpacing: '-0.02em' }}>TEL</span>
+                <span className="font-black" style={{ fontSize: 35, color: '#93c5fd', letterSpacing: '-0.02em' }}>PRO</span>
+              </span>
+              {/* Marketing spans full width of the inline-flex (= TELPRO width) */}
+              <span style={{
+                display: 'block',
+                fontFamily: 'Manrope, sans-serif',
+                fontSize: 9,
+                fontWeight: 500,
+                color: 'rgba(255,255,255,0.38)',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                marginTop: 3,
+                textAlign: 'justify',
+                textAlignLast: 'justify',
+                lineHeight: 1,
+              }}>MARKETING</span>
             </Link>
 
             {/* ── DESKTOP MENU ── */}

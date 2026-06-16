@@ -139,28 +139,26 @@ export default function Footer() {
 
           {/* Brand column */}
           <div>
-            <div className="mb-6" style={{ fontFamily: 'Archivo, sans-serif' }}>
-              <div className="flex flex-col items-start leading-none">
-                <div className="flex items-baseline">
-                  <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                  <span className="font-black" style={{ fontSize: 28, color: '#93c5fd', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
-                </div>
-                <svg height="13" style={{ display: 'block', width: '100%', marginTop: 3, overflow: 'visible' }}>
-                  <text
-                    y="10"
-                    x="0"
-                    textLength="100%"
-                    lengthAdjust="spacing"
-                    style={{
-                      fontFamily: 'Manrope, sans-serif',
-                      fontSize: 9,
-                      fontWeight: 500,
-                      fill: 'rgba(255,255,255,0.38)',
-                      textTransform: 'uppercase',
-                    }}
-                  >MARKETING</text>
-                </svg>
-              </div>
+            <div className="mb-6">
+              <span style={{ fontFamily: 'Archivo, sans-serif', display: 'inline-flex', flexDirection: 'column', alignItems: 'stretch' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'baseline', lineHeight: 1 }}>
+                  <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em' }}>TEL</span>
+                  <span className="font-black" style={{ fontSize: 28, color: '#93c5fd', letterSpacing: '-0.02em' }}>PRO</span>
+                </span>
+                <span style={{
+                  display: 'block',
+                  fontFamily: 'Manrope, sans-serif',
+                  fontSize: 8,
+                  fontWeight: 500,
+                  color: 'rgba(255,255,255,0.38)',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  marginTop: 3,
+                  textAlign: 'justify',
+                  textAlignLast: 'justify',
+                  lineHeight: 1,
+                }}>MARKETING</span>
+              </span>
             </div>
             <p style={{ fontSize: 14, color: 'rgba(180,200,240,0.7)', lineHeight: 1.7, marginBottom: 20, maxWidth: 300 }}>
               Web development and managed CRM operations for ambitious teams. Engineered in San Diego, California.
