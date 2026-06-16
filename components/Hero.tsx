@@ -24,9 +24,6 @@ export default function Hero() {
           playsInline
           preload="auto"
           className="w-full h-full object-cover"
-          style={{
-            filter: 'saturate(0.85) contrast(1.08) brightness(0.75) sepia(0.15) hue-rotate(-8deg)',
-          }}
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
