@@ -23,16 +23,12 @@ export default function Hero() {
           muted
           playsInline
           preload="auto"
-          poster="https://images.pexels.com/videos/6804109/pexels-photo-6804109.jpeg?auto=compress&cs=tinysrgb&w=1600"
           className="w-full h-full object-cover"
           style={{
             filter: 'saturate(0.85) contrast(1.08) brightness(0.75) sepia(0.15) hue-rotate(-8deg)',
           }}
         >
-          <source
-            src="https://videos.pexels.com/video-files/6804109/6804109-hd_1920_1080_25fps.mp4"
-            type="video/mp4"
-          />
+          <source src="/hero.mp4" type="video/mp4" />
         </video>
         {/* Warm orange wash from bottom-left, like the reference */}
         <div

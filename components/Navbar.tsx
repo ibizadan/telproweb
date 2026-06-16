@@ -91,10 +91,10 @@ export default function Navbar() {
               style={{ fontFamily: 'Archivo, sans-serif', textDecoration: 'none' }}
             >
               <div className="flex items-baseline">
-                <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                <span className="font-black" style={{ fontSize: 28, color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+                <span className="font-black text-white" style={{ fontSize: 35, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
+                <span className="font-black" style={{ fontSize: 35, color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
               </div>
-              <span style={{ fontSize: 9, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 2, marginLeft: '0.48em' }}>
+              <span style={{ fontSize: 11, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 2, marginLeft: '0.48em' }}>
                 Marketing
               </span>
             </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
             <ul className="hidden lg:flex items-center gap-0 mx-auto" style={{ listStyle: 'none' }}>
               {/* Home */}
               <li>
-                <a href="#home" style={{ padding: '8px 18px', fontSize: 15, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
+                <a href="#home" style={{ padding: '8px 18px', fontSize: 16, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
                   onMouseEnter={e => (e.currentTarget.style.color='#fff')}
                   onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
                 >Home</a>
@@ -111,7 +111,7 @@ export default function Navbar() {
               {/* Services dropdown — second */}
               <li className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
                 <button
-                  style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'8px 18px', fontSize:15, fontWeight:500, color:'rgba(225,235,255,0.9)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif' }}
+                  style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'8px 18px', fontSize:16, fontWeight:500, color:'rgba(225,235,255,0.9)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif' }}
                   onMouseEnter={e => (e.currentTarget.style.color='#fff')}
                   onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
                 >
@@ -169,7 +169,7 @@ export default function Navbar() {
               {/* About + Contact after Services */}
               {[['About','#about'],['Contact','#contact']].map(([l,h]) => (
                 <li key={l}>
-                  <a href={h} style={{ padding: '8px 18px', fontSize: 15, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
+                  <a href={h} style={{ padding: '8px 18px', fontSize: 16, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
                     onMouseEnter={e => (e.currentTarget.style.color='#fff')}
                     onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
                   >{l}</a>
@@ -206,10 +206,10 @@ export default function Navbar() {
             }}
           >
             <a href="#home" onClick={() => setMobile(false)}
-                style={{ display:'block', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
+                style={{ display:'block', padding:'10px 14px', fontSize:16, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
               >Home</a>
             <button onClick={() => setMobileServices(!mobileServices)}
-              style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif', borderRadius:10 }}
+              style={{ width:'100%', display:'flex', alignItems:'center', justifyContent:'space-between', padding:'10px 14px', fontSize:16, color:'rgba(225,235,255,0.85)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif', borderRadius:10 }}
             >
               Services <ChevronDown style={{ width:14, height:14, transform: mobileServices ? 'rotate(180deg)' : 'none', transition:'transform 0.2s' }} />
             </button>
@@ -224,11 +224,11 @@ export default function Navbar() {
             )}
             {[['About','#about'],['Contact','#contact']].map(([l,h]) => (
               <a key={l} href={h} onClick={() => setMobile(false)}
-                style={{ display:'block', padding:'10px 14px', fontSize:15, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
+                style={{ display:'block', padding:'10px 14px', fontSize:16, color:'rgba(225,235,255,0.85)', textDecoration:'none', borderRadius:10 }}
               >{l}</a>
             ))}
             <a href="#contact" onClick={() => setMobile(false)}
-              style={{ display:'block', marginTop:10, padding:'13px 20px', background:'#fff', color:'#07112e', borderRadius:12, textAlign:'center', fontWeight:600, fontSize:15, textDecoration:'none' }}
+              style={{ display:'block', marginTop:10, padding:'13px 20px', background:'#fff', color:'#07112e', borderRadius:12, textAlign:'center', fontWeight:600, fontSize:16, textDecoration:'none' }}
             >Get Started</a>
           </motion.div>
         )}
