@@ -92,7 +92,7 @@ export default function Navbar() {
             >
               <div className="flex items-baseline">
                 <span className="font-black text-white" style={{ fontSize: 35, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                <span className="font-black" style={{ fontSize: 35, color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+                <span className="font-black" style={{ fontSize: 35, color: '#a4abc4', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
               </div>
               <span style={{ fontSize: 11, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 2, marginLeft: '0.48em' }}>
                 Marketing
@@ -102,18 +102,39 @@ export default function Navbar() {
             {/* ── DESKTOP MENU ── */}
             <ul className="hidden lg:flex items-center gap-0 mx-auto" style={{ listStyle: 'none' }}>
               {/* Home */}
-              <li>
-                <a href="#home" style={{ padding: '8px 18px', fontSize: 16, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
-                  onMouseEnter={e => (e.currentTarget.style.color='#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+              <li style={{ position: 'relative' }}>
+                <a href="#home"
+                  style={{ padding: '8px 18px', fontSize: 16, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block', borderRadius: 10, transition: 'color 0.2s, background 0.2s, box-shadow 0.2s' }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = '#fff';
+                    e.currentTarget.style.background = 'rgba(100,150,255,0.12)';
+                    e.currentTarget.style.boxShadow = '0 0 16px rgba(91,138,255,0.45), 0 0 32px rgba(91,138,255,0.2)';
+                    e.currentTarget.style.textShadow = '0 0 12px rgba(180,210,255,0.8)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = 'rgba(225,235,255,0.9)';
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.textShadow = 'none';
+                  }}
                 >Home</a>
               </li>
               {/* Services dropdown — second */}
               <li className="relative" onMouseEnter={() => setDrop(true)} onMouseLeave={() => setDrop(false)}>
                 <button
-                  style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'8px 18px', fontSize:16, fontWeight:500, color:'rgba(225,235,255,0.9)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif' }}
-                  onMouseEnter={e => (e.currentTarget.style.color='#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+                  style={{ display:'inline-flex', alignItems:'center', gap:5, padding:'8px 18px', fontSize:16, fontWeight:500, color:'rgba(225,235,255,0.9)', background:'none', border:'none', cursor:'pointer', fontFamily:'Manrope, sans-serif', borderRadius:10, transition:'color 0.2s, background 0.2s, box-shadow 0.2s' }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = '#fff';
+                    e.currentTarget.style.background = 'rgba(100,150,255,0.12)';
+                    e.currentTarget.style.boxShadow = '0 0 16px rgba(91,138,255,0.45), 0 0 32px rgba(91,138,255,0.2)';
+                    e.currentTarget.style.textShadow = '0 0 12px rgba(180,210,255,0.8)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = 'rgba(225,235,255,0.9)';
+                    e.currentTarget.style.background = 'none';
+                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.textShadow = 'none';
+                  }}
                 >
                   Services
                   <ChevronDown style={{ width:14, height:14, transition:'transform 0.2s', transform: drop ? 'rotate(180deg)' : 'none' }} />
@@ -169,9 +190,20 @@ export default function Navbar() {
               {/* About + Contact after Services */}
               {[['About','#about'],['Contact','#contact']].map(([l,h]) => (
                 <li key={l}>
-                  <a href={h} style={{ padding: '8px 18px', fontSize: 16, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block' }}
-                    onMouseEnter={e => (e.currentTarget.style.color='#fff')}
-                    onMouseLeave={e => (e.currentTarget.style.color='rgba(225,235,255,0.9)')}
+                  <a href={h}
+                    style={{ padding: '8px 18px', fontSize: 16, fontWeight: 500, color: 'rgba(225,235,255,0.9)', textDecoration: 'none', display: 'block', borderRadius: 10, transition: 'color 0.2s, background 0.2s, box-shadow 0.2s' }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.color = '#fff';
+                      e.currentTarget.style.background = 'rgba(100,150,255,0.12)';
+                      e.currentTarget.style.boxShadow = '0 0 16px rgba(91,138,255,0.45), 0 0 32px rgba(91,138,255,0.2)';
+                      e.currentTarget.style.textShadow = '0 0 12px rgba(180,210,255,0.8)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.color = 'rgba(225,235,255,0.9)';
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                      e.currentTarget.style.textShadow = 'none';
+                    }}
                   >{l}</a>
                 </li>
               ))}

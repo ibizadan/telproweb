@@ -143,7 +143,7 @@ export default function Footer() {
               <div className="flex flex-col items-start leading-none">
                 <div className="flex items-baseline">
                   <span className="font-black text-white" style={{ fontSize: 28, letterSpacing: '-0.02em', lineHeight: 1 }}>TEL</span>
-                  <span className="font-black" style={{ fontSize: 28, color: '#7eb8ff', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
+                  <span className="font-black" style={{ fontSize: 28, color: '#a4abc4', letterSpacing: '-0.02em', lineHeight: 1 }}>PRO</span>
                 </div>
                 <span style={{ fontSize: 9, fontFamily: 'Manrope, sans-serif', fontWeight: 500, color: 'rgba(255,255,255,0.38)', letterSpacing: '0.48em', textTransform: 'uppercase', marginTop: 3, marginLeft: '0.48em' }}>
                   Marketing

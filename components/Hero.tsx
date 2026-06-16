@@ -83,8 +83,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}
           className="text-[clamp(44px,7vw,88px)] font-bold tracking-tight leading-[1.02] mb-8 max-w-5xl mx-auto"
         >
-          <span className="text-gradient block">Smarter Websites.</span>
-          <span className="font-serif-italic text-brand-400">Stronger Businesses.</span>
+          <span className="text-gradient block">Websites built to grow your business.</span>
+          <span className="font-serif-italic text-brand-400">Built for the modern web.</span>
         </motion.h1>
 
         <motion.p
@@ -119,19 +119,18 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* ── Bottom shape divider — curves into the next section ── */}
+      {/* ── Bottom shape divider — 135px, clean flat light grey ── */}
       <div className="absolute bottom-0 left-0 right-0 z-10 leading-none overflow-hidden">
         <svg
-          viewBox="0 0 1440 90"
+          viewBox="0 0 1440 135"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           className="w-full block"
-          style={{ height: 90 }}
+          style={{ height: 135 }}
         >
-          {/* fill = About section background color */}
           <path
-            d="M0,90 L0,45 Q200,0 400,30 Q600,60 720,25 Q840,0 1040,35 Q1240,65 1440,20 L1440,90 Z"
-            fill="#05070f"
+            d="M0,135 L0,68 Q180,10 360,45 Q540,80 720,38 Q900,0 1080,42 Q1260,80 1440,30 L1440,135 Z"
+            fill="#e8eaf0"
           />
         </svg>
       </div>
