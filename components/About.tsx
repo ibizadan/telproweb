@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import { Cpu, Trophy, Sparkle } from 'lucide-react';
+import { Cpu, Trophy, Sparkle, ArrowUpRight } from 'lucide-react';
 
 const values = [
   { icon: Cpu, title: 'We love technology', desc: 'Technology is at the heart of everything we do. We stay ahead of the curve so our clients always get cutting-edge solutions that actually perform.' },
@@ -129,7 +129,7 @@ function CTABanner() {
       <div className="relative p-12 md:p-16 grid md:grid-cols-[1.5fr_1fr] gap-10 items-center" style={{ zIndex: 3 }}>
         <div>
           <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight mb-4">
-            Ready to work with a team that actually cares?
+            How can we help you today?
           </h3>
           <p className="text-lg max-w-md leading-relaxed" style={{ color: 'rgba(180,210,255,0.8)' }}>
             Let&apos;s talk about what we can build together. We respond to every inquiry within 24 hours.
@@ -137,10 +137,11 @@ function CTABanner() {
         </div>
         <div className="flex justify-start md:justify-end">
           <a href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white rounded-xl font-semibold hover:bg-ink-100 transition shadow-2xl"
-            style={{ fontSize: 14, color: '#07112e', boxShadow: '0 8px 40px rgba(0,0,0,0.4)' }}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white transition hover:scale-[1.03]"
+            style={{ fontSize: 14, background: 'linear-gradient(135deg, #ff7a2d 0%, #f04e10 100%)', boxShadow: '0 12px 40px rgba(255,100,30,0.35)' }}
           >
-            Start the conversation →
+            Contact Us
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </div>
